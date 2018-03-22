@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import AudioToolbox
 
 public class Sampler {
   
@@ -15,38 +16,74 @@ public class Sampler {
   static let defaultBankLSB = UInt8(kAUSampler_DefaultBankLSB)
   static let pianoSoudn = UInt8(0)
   
-  var engine: AVAudioEngine
-  var sampler: AVAudioUnitSampler
+  let engine: AVAudioEngine
+  let pianoSampler: AVAudioUnitSampler
+  var sequencer: AVAudioSequencer?
  
   
   public init(fileUrl: URL) {
-    
+    self.sequencer = nil
     self.engine = AVAudioEngine()
-    self.sampler = AVAudioUnitSampler()
+    self.pianoSampler = AVAudioUnitSampler()
     
-    engine.attach(sampler)
-    engine.connect(sampler, to: engine.mainMixerNode, format: nil)
-    
+    engine.attach(pianoSampler)
+    engine.connect(pianoSampler, to: engine.mainMixerNode, format: nil)
+    try! engine.start()
+
     
     do {
       
-      try sampler.loadSoundBankInstrument(at: fileUrl, program: Sampler.pianoSoudn, bankMSB: Sampler.melodicBank, bankLSB: Sampler.defaultBankLSB)
+      try pianoSampler.loadSoundBankInstrument(at: fileUrl, program: Sampler.pianoSoudn, bankMSB: Sampler.melodicBank, bankLSB: Sampler.defaultBankLSB)
+      
+      self.sequencer = AVAudioSequencer(audioEngine: engine)
+//      let songURL = Bundle.main.url(forResource: "song", withExtension: "mid")
+      
+      if let data = getDataFromSequence() {
+        
+        try sequencer?.load(from: data, options: [])
+        //      try sequencer?.load(from: songURL!, options: AVMusicSequenceLoadOptions.smfChannelsToTracks)
+        sequencer?.prepareToPlay()
+      }
       
     } catch let error as NSError {
       print("\(error.localizedDescription)")
       return
     }
-    
-    sampler.sendProgramChange(Sampler.pianoSoudn, bankMSB: Sampler.melodicBank, bankLSB: Sampler.defaultBankLSB, onChannel: 0)
-    try! engine.start()
+
+    pianoSampler.sendProgramChange(Sampler.pianoSoudn, bankMSB: Sampler.melodicBank, bankLSB: Sampler.defaultBankLSB, onChannel: 0)
   }
   
   public func startNote(note: Int) {
-    sampler.startNote(UInt8(note), withVelocity: 64, onChannel: 0)
+    pianoSampler.startNote(UInt8(note), withVelocity: 64, onChannel: 0)
   }
   
   public func stopNote(note: Int) {
-    sampler.stopNote(UInt8(note), onChannel: 0)
+    pianoSampler.stopNote(UInt8(note), onChannel: 0)
+  }
+  
+  public func startPlaying() {
+    try! sequencer?.start()
+  }
+    
+  
+  func getDataFromSequence() -> Data? {
+    
+    guard let musicSequence = Sequencer.createSequence() else { return nil }
+    
+    var status = OSStatus(noErr)
+    var data:Unmanaged<CFData>?
+    status = MusicSequenceFileCreateData(musicSequence,
+                                         MusicSequenceFileTypeID.midiType,
+                                         MusicSequenceFileFlags.eraseFile,
+                                         480, &data)
+    if status != noErr {
+      print("error turning MusicSequence into NSData")
+      return nil
+    }
+    
+    let ns:Data = data!.takeUnretainedValue() as Data
+    data?.release()
+    return ns
   }
   
 }

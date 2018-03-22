@@ -21,12 +21,23 @@ class TestViewController: UIViewController {
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setTitle("Touch", for: .normal)
     button.setTitleColor(.black, for: .normal)
-    button.addTarget(self, action: #selector(touched), for: .touchDown)
-    button.addTarget(self, action: #selector(leaved), for: .touchUpInside)
+    button.addTarget(self, action: #selector(touched1), for: .touchDown)
+    button.addTarget(self, action: #selector(leaved1), for: .touchUpInside)
     self.view.addSubview(button)
     
     button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+    
+    let button2 = UIButton()
+    button2.translatesAutoresizingMaskIntoConstraints = false
+    button2.setTitle("Touch2", for: .normal)
+    button2.setTitleColor(.black, for: .normal)
+    button2.addTarget(self, action: #selector(touched2), for: .touchDown)
+    button2.addTarget(self, action: #selector(leaved2), for: .touchUpInside)
+    self.view.addSubview(button2)
+    
+    button2.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+    button2.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -40).isActive = true
     
     if let url = Bundle.main.url(forResource: "Roland", withExtension: "sf2") {
       sampler = Sampler(fileUrl: url)
@@ -36,15 +47,24 @@ class TestViewController: UIViewController {
     
   }
   
-  @objc private func touched() {
+  @objc private func touched1() {
     print("shouldplay")
     sampler.startNote(note: 60)
     
   }
   
-  @objc func leaved() {
+  @objc func leaved1() {
     print("shouldstop")
     sampler.stopNote(note: 60)
+  }
+  
+  @objc private func touched2() {
+    sampler.startPlaying()
+    
+  }
+  
+  @objc func leaved2() {
+    print("shouldstop")
   }
 
 }
