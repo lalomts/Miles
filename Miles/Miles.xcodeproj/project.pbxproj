@@ -10,23 +10,30 @@
 		0909368A2064213900EBA1BF /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090936892064213900EBA1BF /* Note.swift */; };
 		0909368C206429FD00EBA1BF /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909368B206429FD00EBA1BF /* Duration.swift */; };
 		0909368E20642CA800EBA1BF /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909368D20642CA800EBA1BF /* Tone.swift */; };
+		0909369020643EE500EBA1BF /* Sequentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909368F20643EE500EBA1BF /* Sequentable.swift */; };
 		091350C12062C45200D909B1 /* Sequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091350C02062C45200D909B1 /* Sequencer.swift */; };
-		091350C32062DF0500D909B1 /* song.mid in Resources */ = {isa = PBXBuildFile; fileRef = 091350C22062DF0500D909B1 /* song.mid */; };
 		092AD78E2060CBE500E98981 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AD78D2060CBE500E98981 /* AppDelegate.swift */; };
 		092AD7902060CBE500E98981 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AD78F2060CBE500E98981 /* ViewController.swift */; };
 		092AD7952060CBE500E98981 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 092AD7942060CBE500E98981 /* Assets.xcassets */; };
 		092AD7982060CBE500E98981 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092AD7962060CBE500E98981 /* LaunchScreen.storyboard */; };
 		092AD7A02060DC9D00E98981 /* Sampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AD79F2060DC9D00E98981 /* Sampler.swift */; };
-		092AD7A22060E0EE00E98981 /* Motif_Piano.SF2 in Resources */ = {isa = PBXBuildFile; fileRef = 092AD7A12060E0EE00E98981 /* Motif_Piano.SF2 */; };
-		092AD7A62060EDBE00E98981 /* Roland.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 092AD7A52060EDBE00E98981 /* Roland.sf2 */; };
+		092AD7A62060EDBE00E98981 /* piano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 092AD7A52060EDBE00E98981 /* piano.sf2 */; };
+		099307F720657CD4004B8BA1 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099307F620657CD4004B8BA1 /* Scale.swift */; };
+		099307F920658064004B8BA1 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099307F820658064004B8BA1 /* Interval.swift */; };
+		099307FC2065D919004B8BA1 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099307FB2065D919004B8BA1 /* IntExtensions.swift */; };
+		09964A1E2066104E004EEF75 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09964A1D2066104E004EEF75 /* Chord.swift */; };
+		09964A20206613B7004EEF75 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09964A1F206613B7004EEF75 /* ArrayExtensions.swift */; };
+		09964A222066233D004EEF75 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09964A212066233D004EEF75 /* Sequence.swift */; };
+		09964A2420669BE4004EEF75 /* Harmonization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09964A2320669BE4004EEF75 /* Harmonization.swift */; };
+		09ACBEAC20671AB600ACBE99 /* rbass.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 09ACBEAB20671AB600ACBE99 /* rbass.sf2 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		090936892064213900EBA1BF /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		0909368B206429FD00EBA1BF /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 		0909368D20642CA800EBA1BF /* Tone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tone.swift; sourceTree = "<group>"; };
+		0909368F20643EE500EBA1BF /* Sequentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequentable.swift; sourceTree = "<group>"; };
 		091350C02062C45200D909B1 /* Sequencer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequencer.swift; sourceTree = "<group>"; };
-		091350C22062DF0500D909B1 /* song.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = song.mid; sourceTree = "<group>"; };
 		092AD78A2060CBE500E98981 /* Miles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Miles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		092AD78D2060CBE500E98981 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		092AD78F2060CBE500E98981 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -34,8 +41,15 @@
 		092AD7972060CBE500E98981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		092AD7992060CBE500E98981 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		092AD79F2060DC9D00E98981 /* Sampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sampler.swift; sourceTree = "<group>"; };
-		092AD7A12060E0EE00E98981 /* Motif_Piano.SF2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Motif_Piano.SF2; sourceTree = "<group>"; };
-		092AD7A52060EDBE00E98981 /* Roland.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Roland.sf2; sourceTree = "<group>"; };
+		092AD7A52060EDBE00E98981 /* piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = piano.sf2; sourceTree = "<group>"; };
+		099307F620657CD4004B8BA1 /* Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
+		099307F820658064004B8BA1 /* Interval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
+		099307FB2065D919004B8BA1 /* IntExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtensions.swift; sourceTree = "<group>"; };
+		09964A1D2066104E004EEF75 /* Chord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
+		09964A1F206613B7004EEF75 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		09964A212066233D004EEF75 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
+		09964A2320669BE4004EEF75 /* Harmonization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Harmonization.swift; sourceTree = "<group>"; };
+		09ACBEAB20671AB600ACBE99 /* rbass.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rbass.sf2; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,21 +82,44 @@
 		092AD78C2060CBE500E98981 /* Miles */ = {
 			isa = PBXGroup;
 			children = (
+				099307FD2065DDDD004B8BA1 /* Extensions */,
 				092AD78D2060CBE500E98981 /* AppDelegate.swift */,
 				092AD79F2060DC9D00E98981 /* Sampler.swift */,
 				091350C02062C45200D909B1 /* Sequencer.swift */,
+				09964A212066233D004EEF75 /* Sequence.swift */,
 				092AD78F2060CBE500E98981 /* ViewController.swift */,
 				092AD7942060CBE500E98981 /* Assets.xcassets */,
-				092AD7A52060EDBE00E98981 /* Roland.sf2 */,
-				092AD7A12060E0EE00E98981 /* Motif_Piano.SF2 */,
-				091350C22062DF0500D909B1 /* song.mid */,
+				09ACBEAB20671AB600ACBE99 /* rbass.sf2 */,
+				092AD7A52060EDBE00E98981 /* piano.sf2 */,
 				092AD7962060CBE500E98981 /* LaunchScreen.storyboard */,
 				092AD7992060CBE500E98981 /* Info.plist */,
+				099307FA20658844004B8BA1 /* Theory */,
+				0909368F20643EE500EBA1BF /* Sequentable.swift */,
+			);
+			path = Miles;
+			sourceTree = "<group>";
+		};
+		099307FA20658844004B8BA1 /* Theory */ = {
+			isa = PBXGroup;
+			children = (
+				099307F820658064004B8BA1 /* Interval.swift */,
+				09964A1D2066104E004EEF75 /* Chord.swift */,
+				09964A2320669BE4004EEF75 /* Harmonization.swift */,
 				090936892064213900EBA1BF /* Note.swift */,
 				0909368D20642CA800EBA1BF /* Tone.swift */,
 				0909368B206429FD00EBA1BF /* Duration.swift */,
+				099307F620657CD4004B8BA1 /* Scale.swift */,
 			);
-			path = Miles;
+			path = Theory;
+			sourceTree = "<group>";
+		};
+		099307FD2065DDDD004B8BA1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				099307FB2065D919004B8BA1 /* IntExtensions.swift */,
+				09964A1F206613B7004EEF75 /* ArrayExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,10 +181,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				091350C32062DF0500D909B1 /* song.mid in Resources */,
 				092AD7982060CBE500E98981 /* LaunchScreen.storyboard in Resources */,
-				092AD7A22060E0EE00E98981 /* Motif_Piano.SF2 in Resources */,
-				092AD7A62060EDBE00E98981 /* Roland.sf2 in Resources */,
+				09ACBEAC20671AB600ACBE99 /* rbass.sf2 in Resources */,
+				092AD7A62060EDBE00E98981 /* piano.sf2 in Resources */,
 				092AD7952060CBE500E98981 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,12 +195,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09964A20206613B7004EEF75 /* ArrayExtensions.swift in Sources */,
+				099307F920658064004B8BA1 /* Interval.swift in Sources */,
+				09964A222066233D004EEF75 /* Sequence.swift in Sources */,
 				0909368A2064213900EBA1BF /* Note.swift in Sources */,
 				092AD7902060CBE500E98981 /* ViewController.swift in Sources */,
 				091350C12062C45200D909B1 /* Sequencer.swift in Sources */,
+				099307FC2065D919004B8BA1 /* IntExtensions.swift in Sources */,
 				0909368C206429FD00EBA1BF /* Duration.swift in Sources */,
+				09964A1E2066104E004EEF75 /* Chord.swift in Sources */,
 				0909368E20642CA800EBA1BF /* Tone.swift in Sources */,
+				09964A2420669BE4004EEF75 /* Harmonization.swift in Sources */,
+				0909369020643EE500EBA1BF /* Sequentable.swift in Sources */,
 				092AD78E2060CBE500E98981 /* AppDelegate.swift in Sources */,
+				099307F720657CD4004B8BA1 /* Scale.swift in Sources */,
 				092AD7A02060DC9D00E98981 /* Sampler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

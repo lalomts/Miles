@@ -12,9 +12,39 @@ import AVFoundation
 import AudioToolbox
 
 public class Sequencer {
-
-  public static func createSequence() -> MusicSequence?{
+  private var sequence: MusicSequence?
+  
+  public var data: Data? {
+    get {
+      guard let sequence = sequence else {return nil}
+      var status = OSStatus(noErr)
+      var data:Unmanaged<CFData>?
+      status = MusicSequenceFileCreateData(sequence,
+                                           MusicSequenceFileTypeID.midiType,
+                                           MusicSequenceFileFlags.eraseFile,
+                                           480, &data)
+      if status != noErr {
+        print("error turning MusicSequence into NSData")
+        return nil
+      }
+      
+      let ns:Data = data!.takeUnretainedValue() as Data
+      data?.release()
+      return ns
+    }
+  }
+  
+  public init() {
+    self.sequence = createSequence()
+    addTrack()
     
+    
+  }
+  
+  /// If possible, creates a new blank empty sequence
+  ///
+  /// - Returns: The new sequence
+  func createSequence() -> MusicSequence? {
     var s: MusicSequence?
     let status = NewMusicSequence(&s)
     
@@ -23,16 +53,14 @@ public class Sequencer {
     }
     
     if let musicSequence = s {
-      Sequencer.addTrack(toSequence: musicSequence)
+      //      self.addTrack()
       return musicSequence
     }
     return nil
-    
   }
   
-  
-  public static func addTrack(toSequence sequence: MusicSequence) {
-    
+  public func addTrack() {
+    guard let sequence = sequence else { return }
     var t: MusicTrack?
     var status = MusicSequenceNewTrack(sequence, &t)
     if status != noErr {
@@ -63,39 +91,24 @@ public class Sequencer {
       }
       
       // Make some notes to test 🎹
+      let scale = Scale.random()
+      let tones = scale.tones(forKey: Tone.Bflat)
+      print(scale, tones)
       var beat = MusicTimeStamp(0.0)
-      for i: UInt8 in 45...88 {
+      for _ in 0...200 {
+        let randomNote = tones.randomElement()
+        let octave = Int.randomWith(floor: 2, ceil: 4)
         var mess = MIDINoteMessage(channel: 0,
-                                   note: i,
-                                   velocity: 64,
+                                   note: randomNote.midiValue(forOctave: octave).uint8,
+                                   velocity: Int.randomWith(floor: 40, ceil: 60).uint8,
                                    releaseVelocity: 0,
-                                   duration:  getRandomDuration())
+                                   duration:  Duration.randomize([.quarter, .eighth, .sixteenth]).rawValue)
         status = MusicTrackNewMIDINoteEvent(track, beat, &mess)
         if status != noErr {
           print("creating new midi note event \(status)")
         }
-        
-        
-        var mess2 = MIDINoteMessage(channel: 0,
-                                   note: 133 - i,
-                                   velocity: 64,
-                                   releaseVelocity: 0,
-                                   duration:  getRandomDuration())
-        var status2 = MusicTrackNewMIDINoteEvent(track, beat, &mess2)
-        if status != noErr {
-          print("creating new midi note event \(status2)")
-        }
-        beat += Float64(getRandomDuration())
+        beat += Float64(Duration.randomize( [.eighth, .sixteenth]).rawValue)
       }
     }
   }
-  
-  static func getRandomDuration() -> Float {
-    let durations: [Float] = [0.0625, 0.125, 0.25, 0.33, 0.5, 0.75, 1]
-    let index = Int(arc4random_uniform(UInt32(durations.count)))
-    let element = durations[index]
-    return element
-  }
-  
-  
 }

@@ -39,7 +39,7 @@ class TestViewController: UIViewController {
     button2.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     button2.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -40).isActive = true
     
-    if let url = Bundle.main.url(forResource: "Roland", withExtension: "sf2") {
+    if let url = Bundle.main.url(forResource: "rbass", withExtension: "sf2") {
       sampler = Sampler(fileUrl: url)
     } else {
       fatalError("Could not load file")
@@ -48,14 +48,13 @@ class TestViewController: UIViewController {
   }
   
   @objc private func touched1() {
-    print("shouldplay")
     sampler.startNote(note: 60)
     
   }
   
   @objc func leaved1() {
-    print("shouldstop")
     sampler.stopNote(note: 60)
+    print(Int.randomWith(ceil: 4))
   }
   
   @objc private func touched2() {

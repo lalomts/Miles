@@ -34,11 +34,12 @@ public class Sampler {
     do {
       
       try pianoSampler.loadSoundBankInstrument(at: fileUrl, program: Sampler.pianoSoudn, bankMSB: Sampler.melodicBank, bankLSB: Sampler.defaultBankLSB)
+//      try pianoSampler.loadInstrument(at: fileUrl)
       
       self.sequencer = AVAudioSequencer(audioEngine: engine)
 //      let songURL = Bundle.main.url(forResource: "song", withExtension: "mid")
       
-      if let data = getDataFromSequence() {
+      if let data = Sequencer().data {
         
         try sequencer?.load(from: data, options: [])
         //      try sequencer?.load(from: songURL!, options: AVMusicSequenceLoadOptions.smfChannelsToTracks)
@@ -63,27 +64,6 @@ public class Sampler {
   
   public func startPlaying() {
     try! sequencer?.start()
-  }
-    
-  
-  func getDataFromSequence() -> Data? {
-    
-    guard let musicSequence = Sequencer.createSequence() else { return nil }
-    
-    var status = OSStatus(noErr)
-    var data:Unmanaged<CFData>?
-    status = MusicSequenceFileCreateData(musicSequence,
-                                         MusicSequenceFileTypeID.midiType,
-                                         MusicSequenceFileFlags.eraseFile,
-                                         480, &data)
-    if status != noErr {
-      print("error turning MusicSequence into NSData")
-      return nil
-    }
-    
-    let ns:Data = data!.takeUnretainedValue() as Data
-    data?.release()
-    return ns
   }
   
 }
