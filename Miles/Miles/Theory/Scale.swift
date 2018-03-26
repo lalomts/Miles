@@ -8,6 +8,7 @@
 import Foundation
 
 public enum Scale: Int {
+  
   case major
   case minor
   case harmonicMinor
@@ -18,6 +19,7 @@ public enum Scale: Int {
   case minorBebop
   case bebopDominant
   case augmented
+  case diminished
   case dorian
   case phrygian
   case lydian
@@ -51,6 +53,7 @@ public enum Scale: Int {
     case .blues: return [.P1, .m3, .P4, .d5, .P5, .m7]
     case .spanishGypsy: return [.P1, .m2, .M3, .P4, .P5, .m6, .m7]
     case .augmented: return [.P1, .m3, .M3, .P5, .m6, .M7]
+    case .diminished: return [.P1, .M2, .m3, .P4, .d5, .m6, .M6, .M7]
     }
   }
   
@@ -60,6 +63,14 @@ public enum Scale: Int {
       maxValue += 1
     }
     return maxValue
+  }
+  
+  public static var allMajor: [Scale] {
+    return [.major, .majorPentatonic, .majorBebop, .bebopDominant, .spanishGypsy]
+  }
+  
+  public static var allMinor: [Scale] {
+    return [.minor, .melodicMinor, .harmonicMinor, .minorPentatonic, .minorBebop]
   }
   
   public static func random() -> Scale {

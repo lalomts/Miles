@@ -90,25 +90,18 @@ public class Sequencer {
         print("creating program change event \(status)")
       }
       
-      // Make some notes to test 🎹
-      let scale = Scale.random()
-      let tones = scale.tones(forKey: Tone.Bflat)
-      print(scale, tones)
+      // Testing some notes 🎹
+      let harm = Harmonization(key: .A, type: .major)
       var beat = MusicTimeStamp(0.0)
-      for _ in 0...200 {
-        let randomNote = tones.randomElement()
-        let octave = Int.randomWith(floor: 2, ceil: 4)
-        var mess = MIDINoteMessage(channel: 0,
-                                   note: randomNote.midiValue(forOctave: octave).uint8,
-                                   velocity: Int.randomWith(floor: 40, ceil: 60).uint8,
-                                   releaseVelocity: 0,
-                                   duration:  Duration.randomize([.quarter, .eighth, .sixteenth]).rawValue)
-        status = MusicTrackNewMIDINoteEvent(track, beat, &mess)
-        if status != noErr {
-          print("creating new midi note event \(status)")
-        }
-        beat += Float64(Duration.randomize( [.eighth, .sixteenth]).rawValue)
+      
+      
+      for _ in 0...25 {
+        let chord = harm.chords.randomElement()
+        let comper = ChordComper(chord: chord)
+        print(chord)
+        comper.addToTrack(track, onBeat: &beat)
       }
+      
     }
   }
 }

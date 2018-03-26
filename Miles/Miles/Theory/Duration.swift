@@ -15,10 +15,12 @@ public enum Duration: Float {
   case sixteenth = 0.25 // Semiquaver
   case thirtySecond = 0.125 // Demisemiquaver
   case sixtyFourth = 0.0625 // Hemidemisemiquaver
-  // And so on...
+    // And so on...
 
   //TODO: - Add triplet
-  
+  public var rawValueDouble: Double {
+    return Double(self.rawValue)
+  }
   public var dotted:Float {
     return self.rawValue + (self.rawValue / 2)
   }

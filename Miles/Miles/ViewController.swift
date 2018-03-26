@@ -39,7 +39,7 @@ class TestViewController: UIViewController {
     button2.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     button2.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -40).isActive = true
     
-    if let url = Bundle.main.url(forResource: "rbass", withExtension: "sf2") {
+    if let url = Bundle.main.url(forResource: "piano", withExtension: "sf2") {
       sampler = Sampler(fileUrl: url)
     } else {
       fatalError("Could not load file")

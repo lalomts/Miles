@@ -7,8 +7,7 @@
 //
 import AudioToolbox
 
-public protocol Sequentable {
-  var duration: Duration {get}
+public protocol Sequentiable {
   
   func addToTrack(_ track: MusicTrack, onBeat beat: inout MusicTimeStamp)
 }

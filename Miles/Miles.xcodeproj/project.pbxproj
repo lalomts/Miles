@@ -10,7 +10,7 @@
 		0909368A2064213900EBA1BF /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090936892064213900EBA1BF /* Note.swift */; };
 		0909368C206429FD00EBA1BF /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909368B206429FD00EBA1BF /* Duration.swift */; };
 		0909368E20642CA800EBA1BF /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909368D20642CA800EBA1BF /* Tone.swift */; };
-		0909369020643EE500EBA1BF /* Sequentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909368F20643EE500EBA1BF /* Sequentable.swift */; };
+		0909369020643EE500EBA1BF /* Sequentiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909368F20643EE500EBA1BF /* Sequentiable.swift */; };
 		091350C12062C45200D909B1 /* Sequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091350C02062C45200D909B1 /* Sequencer.swift */; };
 		092AD78E2060CBE500E98981 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AD78D2060CBE500E98981 /* AppDelegate.swift */; };
 		092AD7902060CBE500E98981 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AD78F2060CBE500E98981 /* ViewController.swift */; };
@@ -25,14 +25,18 @@
 		09964A20206613B7004EEF75 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09964A1F206613B7004EEF75 /* ArrayExtensions.swift */; };
 		09964A222066233D004EEF75 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09964A212066233D004EEF75 /* Sequence.swift */; };
 		09964A2420669BE4004EEF75 /* Harmonization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09964A2320669BE4004EEF75 /* Harmonization.swift */; };
-		09ACBEAC20671AB600ACBE99 /* rbass.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 09ACBEAB20671AB600ACBE99 /* rbass.sf2 */; };
+		09ACBEAC20671AB600ACBE99 /* bass.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 09ACBEAB20671AB600ACBE99 /* bass.sf2 */; };
+		09ACBEAE20685EF000ACBE99 /* ChordComper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACBEAD20685EF000ACBE99 /* ChordComper.swift */; };
+		09ACBEB0206865DF00ACBE99 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 092AD7992060CBE500E98981 /* Info.plist */; };
+		09ACBEB220687BBC00ACBE99 /* Rythm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACBEB120687BBC00ACBE99 /* Rythm.swift */; };
+		09ACBEB42068C95900ACBE99 /* Bassliner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACBEB32068C95900ACBE99 /* Bassliner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		090936892064213900EBA1BF /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		0909368B206429FD00EBA1BF /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 		0909368D20642CA800EBA1BF /* Tone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tone.swift; sourceTree = "<group>"; };
-		0909368F20643EE500EBA1BF /* Sequentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequentable.swift; sourceTree = "<group>"; };
+		0909368F20643EE500EBA1BF /* Sequentiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequentiable.swift; sourceTree = "<group>"; };
 		091350C02062C45200D909B1 /* Sequencer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequencer.swift; sourceTree = "<group>"; };
 		092AD78A2060CBE500E98981 /* Miles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Miles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		092AD78D2060CBE500E98981 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,7 +53,10 @@
 		09964A1F206613B7004EEF75 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		09964A212066233D004EEF75 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		09964A2320669BE4004EEF75 /* Harmonization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Harmonization.swift; sourceTree = "<group>"; };
-		09ACBEAB20671AB600ACBE99 /* rbass.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rbass.sf2; sourceTree = "<group>"; };
+		09ACBEAB20671AB600ACBE99 /* bass.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = bass.sf2; sourceTree = "<group>"; };
+		09ACBEAD20685EF000ACBE99 /* ChordComper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordComper.swift; sourceTree = "<group>"; };
+		09ACBEB120687BBC00ACBE99 /* Rythm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rythm.swift; sourceTree = "<group>"; };
+		09ACBEB32068C95900ACBE99 /* Bassliner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bassliner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +74,9 @@
 			isa = PBXGroup;
 			children = (
 				092AD78C2060CBE500E98981 /* Miles */,
+				092AD7992060CBE500E98981 /* Info.plist */,
+				092AD7962060CBE500E98981 /* LaunchScreen.storyboard */,
+				092AD7942060CBE500E98981 /* Assets.xcassets */,
 				092AD78B2060CBE500E98981 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,19 +92,19 @@
 		092AD78C2060CBE500E98981 /* Miles */ = {
 			isa = PBXGroup;
 			children = (
-				099307FD2065DDDD004B8BA1 /* Extensions */,
+				092AD78F2060CBE500E98981 /* ViewController.swift */,
 				092AD78D2060CBE500E98981 /* AppDelegate.swift */,
 				092AD79F2060DC9D00E98981 /* Sampler.swift */,
 				091350C02062C45200D909B1 /* Sequencer.swift */,
 				09964A212066233D004EEF75 /* Sequence.swift */,
-				092AD78F2060CBE500E98981 /* ViewController.swift */,
-				092AD7942060CBE500E98981 /* Assets.xcassets */,
-				09ACBEAB20671AB600ACBE99 /* rbass.sf2 */,
-				092AD7A52060EDBE00E98981 /* piano.sf2 */,
-				092AD7962060CBE500E98981 /* LaunchScreen.storyboard */,
-				092AD7992060CBE500E98981 /* Info.plist */,
+				0909368F20643EE500EBA1BF /* Sequentiable.swift */,
+				09ACBEAD20685EF000ACBE99 /* ChordComper.swift */,
+				09ACBEB32068C95900ACBE99 /* Bassliner.swift */,
+				090936892064213900EBA1BF /* Note.swift */,
+				09ACBEB120687BBC00ACBE99 /* Rythm.swift */,
 				099307FA20658844004B8BA1 /* Theory */,
-				0909368F20643EE500EBA1BF /* Sequentable.swift */,
+				09ACBEAF20685EFD00ACBE99 /* Instruments */,
+				099307FD2065DDDD004B8BA1 /* Extensions */,
 			);
 			path = Miles;
 			sourceTree = "<group>";
@@ -102,13 +112,12 @@
 		099307FA20658844004B8BA1 /* Theory */ = {
 			isa = PBXGroup;
 			children = (
+				0909368D20642CA800EBA1BF /* Tone.swift */,
 				099307F820658064004B8BA1 /* Interval.swift */,
+				099307F620657CD4004B8BA1 /* Scale.swift */,
 				09964A1D2066104E004EEF75 /* Chord.swift */,
 				09964A2320669BE4004EEF75 /* Harmonization.swift */,
-				090936892064213900EBA1BF /* Note.swift */,
-				0909368D20642CA800EBA1BF /* Tone.swift */,
 				0909368B206429FD00EBA1BF /* Duration.swift */,
-				099307F620657CD4004B8BA1 /* Scale.swift */,
 			);
 			path = Theory;
 			sourceTree = "<group>";
@@ -120,6 +129,15 @@
 				09964A1F206613B7004EEF75 /* ArrayExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		09ACBEAF20685EFD00ACBE99 /* Instruments */ = {
+			isa = PBXGroup;
+			children = (
+				09ACBEAB20671AB600ACBE99 /* bass.sf2 */,
+				092AD7A52060EDBE00E98981 /* piano.sf2 */,
+			);
+			path = Instruments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,8 +200,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				092AD7982060CBE500E98981 /* LaunchScreen.storyboard in Resources */,
-				09ACBEAC20671AB600ACBE99 /* rbass.sf2 in Resources */,
+				09ACBEAC20671AB600ACBE99 /* bass.sf2 in Resources */,
 				092AD7A62060EDBE00E98981 /* piano.sf2 in Resources */,
+				09ACBEB0206865DF00ACBE99 /* Info.plist in Resources */,
 				092AD7952060CBE500E98981 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,12 +220,15 @@
 				0909368A2064213900EBA1BF /* Note.swift in Sources */,
 				092AD7902060CBE500E98981 /* ViewController.swift in Sources */,
 				091350C12062C45200D909B1 /* Sequencer.swift in Sources */,
+				09ACBEAE20685EF000ACBE99 /* ChordComper.swift in Sources */,
+				09ACBEB220687BBC00ACBE99 /* Rythm.swift in Sources */,
 				099307FC2065D919004B8BA1 /* IntExtensions.swift in Sources */,
 				0909368C206429FD00EBA1BF /* Duration.swift in Sources */,
 				09964A1E2066104E004EEF75 /* Chord.swift in Sources */,
 				0909368E20642CA800EBA1BF /* Tone.swift in Sources */,
 				09964A2420669BE4004EEF75 /* Harmonization.swift in Sources */,
-				0909369020643EE500EBA1BF /* Sequentable.swift in Sources */,
+				09ACBEB42068C95900ACBE99 /* Bassliner.swift in Sources */,
+				0909369020643EE500EBA1BF /* Sequentiable.swift in Sources */,
 				092AD78E2060CBE500E98981 /* AppDelegate.swift in Sources */,
 				099307F720657CD4004B8BA1 /* Scale.swift in Sources */,
 				092AD7A02060DC9D00E98981 /* Sampler.swift in Sources */,
@@ -340,7 +362,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TZ776F43UB;
-				INFOPLIST_FILE = Miles/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lalo.Miles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -355,7 +377,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TZ776F43UB;
-				INFOPLIST_FILE = Miles/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lalo.Miles;
 				PRODUCT_NAME = "$(TARGET_NAME)";

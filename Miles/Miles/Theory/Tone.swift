@@ -31,8 +31,6 @@ public enum Tone: Int, CustomStringConvertible {
   
   public func noteAtInterval(_ interval: Interval) -> Tone{
     let newNote = shiftBy(interval.rawValue)
-    print(newNote)
-    print(Tone.all.count)
     return Tone.all[newNote]
   }
   
