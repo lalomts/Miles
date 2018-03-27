@@ -8,18 +8,18 @@
 
 public enum Tone: Int, CustomStringConvertible {
   
-  case C      = 12
-  case Csharp = 13
-  case D      = 14
-  case Eflat  = 15
-  case E      = 16
-  case F      = 17
-  case Fsharp = 18
-  case G      = 19
-  case Aflat  = 20
-  case A      = 21
-  case Bflat  = 22
-  case B      = 23
+  case C      = 24
+  case Csharp = 25
+  case D      = 26
+  case Eflat  = 27
+  case E      = 28
+  case F      = 29
+  case Fsharp = 30
+  case G      = 31
+  case Aflat  = 32
+  case A      = 33
+  case Bflat  = 34
+  case B      = 35
   
   public static var all:[Tone] {
     var all = [Tone]()

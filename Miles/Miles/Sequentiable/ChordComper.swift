@@ -8,25 +8,26 @@
 
 import AudioToolbox
 
+/// Arranges the chord's notes and inversions in a comping rythm to create the accompainment piano.
 public struct ChordComper: Sequentiable {
   
   public let chord: Chord
-  public let rythmPattern: Rythm.Pattern
   
   public init(chord: Chord) {
     self.chord = chord
-    self.rythmPattern = Rythm.Comping.pattern
   }
   
   public func addNotes(toTrack track: MusicTrack, onBeat beat: inout MusicTimeStamp) {
     
-    for block in rythmPattern {
+    let pattern = Rythm.Comping.pattern
+    
+    for block in pattern {
       
       switch block {
         
       case .note(let dur):
         
-        for note in chord.notes(atOctave: Int.randomWith(floor: 2, ceil: 3), inversion: Int.randomWith(ceil: 2)) {
+        for note in chord.notes(atOctave: Int.randomWith(floor: 1, ceil: 2), inversion: Int.randomWith(ceil: 2)) {
           note.addToTrack(track, onBeat: beat, duration: dur, velocity: Int.randomWith(floor: 30, ceil: 50))
         }
         

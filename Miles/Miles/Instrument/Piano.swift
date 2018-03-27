@@ -8,7 +8,7 @@
 
 import AudioToolbox
 
-public class Piano: Instrument {
+public struct Piano: Instrument {
   
   public enum PianoType {
     case comping

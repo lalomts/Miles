@@ -42,7 +42,6 @@ public struct Harmonization {
       case .harmonicMinor: return .harmonicMinor
       }
     }
-        
   }
   
   public let chords: [Chord]

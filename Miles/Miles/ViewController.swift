@@ -10,7 +10,7 @@ import UIKit
 
 class TestViewController: UIViewController {
   
-  var sampler: Sampler!
+  var sequence: Sequence!
 
   override func loadView() {
     super.loadView()
@@ -39,31 +39,31 @@ class TestViewController: UIViewController {
     button2.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     button2.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -40).isActive = true
     
-    if let url = Bundle.main.url(forResource: "piano", withExtension: "sf2") {
-      sampler = Sampler(fileUrl: url)
-    } else {
-      fatalError("Could not load file")
-    }
+    let piano = Piano(for: .comping)
+    let drums = Drums(withParts: [.Ride, .Hihats, .Snare, .Bass])
+    let bass = Bass()
+    let harmonization = Harmonization(key: .A, type: .major)
     
+    sequence = Sequence(harmonization: harmonization, withInstruments: [piano, drums, bass])
+    sequence.createArrangement()
   }
   
   @objc private func touched1() {
-    sampler.startNote(note: 60)
+//    sampler.startNote(note: 60)
     
   }
   
   @objc func leaved1() {
-    sampler.stopNote(note: 60)
-    print(Int.randomWith(ceil: 4))
+//    sampler.stopNote(note: 60)
   }
   
   @objc private func touched2() {
-    sampler.startPlaying()
+//    sampler.startPlaying()
     
   }
   
   @objc func leaved2() {
-    print("shouldstop")
+    sequence.startPlaying()
   }
 
 }

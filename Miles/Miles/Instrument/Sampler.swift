@@ -53,11 +53,6 @@ public class Sampler {
     try! self.engine.start()
   }
   
-  public func attatchTo(engine: AVAudioEngine) {
-//    self.engine = engine
-//    self.engine!.attach(self.sampler)
-//    self.engine!.connect(self.sampler, to: self.engine!.mainMixerNode, format: nil)
-  }
   
   public func laySequence(withArrangement arrangement: (MusicTrack) -> Void) {
     
@@ -94,46 +89,5 @@ public class Sampler {
     }
   }
   
-//
-//  public init(fileUrl: URL) {
-//
-//    self.sequencer = nil
-//    self.engine = AVAudioEngine()
-//    self.sampler = AVAudioUnitSampler()
-//
-//    engine.attach(sampler)
-//    engine.connect(sampler, to: engine.mainMixerNode, format: nil)
-//    try! engine.start()
-//
-//
-//    do {
-//
-//      try sampler.loadSoundBankInstrument(at: fileUrl, program: MidiBankType.defaultProgram, bankMSB: MidiBankType.Percussion.value, bankLSB: MidiBankType.DefaultBankLSB.value)
-//
-//      self.sequencer = AVAudioSequencer(audioEngine: engine)
-//
-//      if let data = Sequencer().data {
-//
-//        try sequencer?.load(from: data, options: [])
-//        sequencer?.prepareToPlay()
-//      }
-//
-//    } catch let error as NSError {
-//      print("\(error.localizedDescription)")
-//      return
-//    }
-//
-////    sampler.sendProgramChange(Sampler.pianoSoudn, bankMSB: Sampler.melodicBank, bankLSB: Sampler.defaultBankLSB, onChannel: 0)
-//  }
-//  
-//  public func startNote(note: Int) {
-//    sampler.startNote(UInt8(note), withVelocity: 64, onChannel: 0)
-//  }
-//  
-//  public func stopNote(note: Int) {
-//    sampler.stopNote(UInt8(note), onChannel: 0)
-//  }
-//  
- 
   
 }

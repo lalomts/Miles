@@ -36,6 +36,11 @@ public struct Note {
     }
   }
   
+  public static func fromMidiValue(_ value: Int) -> Note {
+    let octave = Int((Double(value) / 12).rounded(.down) - 2)
+    let note = (value % 12) + 24
+    return Note(tone: Tone(rawValue: note)!, octave: octave)
+  }
 }
 
 

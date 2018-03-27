@@ -28,7 +28,7 @@ public struct Bassliner: Sequentiable {
       switch block {
         
       case .note(let dur):
-        let notes = chord.notes(atOctave: Int.randomWith(floor: 2, ceil: 3))
+        let notes = chord.notes(atOctave: Int.randomWith(floor: 1, ceil: 2))
         var note: Note
         
         switch internalBeat {
@@ -46,6 +46,4 @@ public struct Bassliner: Sequentiable {
       }
     }
   }
-  
-  
 }

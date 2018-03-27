@@ -11,8 +11,8 @@ public enum Rythm {
   public typealias Pattern = [RythmBlock]
   
   case Comping
-  case DrumBeat
   case Bassline
+  case DrumBeat(part: DrumSwinger.DrumPart)
   
   public enum RythmBlock {
     case note(Duration)
@@ -23,11 +23,13 @@ public enum Rythm {
     switch self {
     case .Comping: return randomComping()
     case .Bassline: return randomBassline()
-    default:
-      return []
+    case .DrumBeat(part: let part): return randomDrumPart(part: part)
     }
   }
   
+  /// Creates a random rythm pattern for comping one bar.
+  ///
+  /// - Returns: The note/rest rythm pattern for the bar
   private func randomComping() -> Pattern {
     let rythms: [Pattern] = [
       [.note(.quarter(dotted: false)), .rest(.eighth(dotted: false)), .note(.eighth(dotted: false)), .rest(.half(dotted: false))],
@@ -57,13 +59,13 @@ public enum Rythm {
       [.note(.half(dotted: false)), .note(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)), .rest(.quarter(dotted: false))],
       
       [.note(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)), .rest(.half(dotted: false)), .rest(.eighth(dotted: false)), .note(.eighth(dotted: false))]
-      
-      
-      
     ]
     return rythms.randomElement()
   }
   
+  /// Creates a random bassline pattern that can be used inside a bar
+  ///
+  /// - Returns: Returns: The note/rest rythm pattern for the bar
   private func randomBassline() -> Pattern {
     let rythms: [Pattern] = [
       [.note(.quarter(dotted: false)), .note(.quarter(dotted: false)), .note(.quarter(dotted: false)), .note(.quarter(dotted: false)) ],
@@ -73,5 +75,58 @@ public enum Rythm {
     ]
     return rythms.randomElement()
   }
+  /// Creates a random drumline pattern that can be used inside a bar, divided by drum parts (hihats, bass, etc.)
+  ///
+  /// - Returns: Returns: The note/rest rythm pattern for the selected drum part
+  private func randomDrumPart(part: DrumSwinger.DrumPart) -> Pattern {
+    
+    let ride: [Pattern] = [
+      [.note(.quarter(dotted: false)), .note(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)), .note(.quarter(dotted: false)), .note(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1))],
+      
+      [.note(.eightTriplet(thirds: 1)),.rest(.eightTriplet(thirds: 1)),.note(.eightTriplet(thirds: 1)), .rest(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)), .note(.quarter(dotted: false)),.note(.eightTriplet(thirds: 1)),.rest(.eightTriplet(thirds: 1)),.note(.eightTriplet(thirds: 1)) ],
+
+      [.note(.quarter(dotted: false)),
+       .note(.eightTriplet(thirds: 1)),.rest(.eightTriplet(thirds: 1)),.note(.eightTriplet(thirds: 1)),
+       .note(.eightTriplet(thirds: 1)),.rest(.eightTriplet(thirds: 1)),.note(.eightTriplet(thirds: 1)),
+       .note(.eightTriplet(thirds: 1)),.rest(.eightTriplet(thirds: 1)),.note(.eightTriplet(thirds: 1))]
+    ]
+    
+    let hihats: [Pattern] = [
+      [.rest(.quarter(dotted: false)), .note(.quarter(dotted: false)), .rest(.quarter(dotted: false)), .note(.quarter(dotted: false))],
+      
+      [.rest(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)), .rest(.quarter(dotted: false)), .rest(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)), .rest(.quarter(dotted: false))]
+    ]
+    
+    let bassDrum: [Pattern] = [
+      [.note(.quarter(dotted: false)), .note(.quarter(dotted: false)), .note(.quarter(dotted: false)), .note(.quarter(dotted: false))  ],
+      
+      [.note(.quarter(dotted: false)), .rest(.quarter(dotted: false)), .note(.quarter(dotted: false)), .rest(.quarter(dotted: false))  ],
+
+//      [.rest(.eightTriplet(thirds: 1)), .note(.eightTriplet(thirds: 1)), .rest(.eightTriplet(thirds: 1)), .rest(.quarter(dotted: false)), .rest(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)), .rest(.quarter(dotted: false))],
+//
+//      [.rest(.quarter(dotted: false)), .rest(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)), .rest(.quarter(dotted: false)), .note(.eightTriplet(thirds: 1)), .rest(.eightTriplet(thirds: 2))]
+    ]
+    
+    let snare: [Pattern] = [
+      [.rest(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)), .rest(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)), .rest(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)), .rest(.quarter(dotted: false))],
+      
+      [.rest(.quarter(dotted: false)), .rest(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)), .rest(.half(dotted: false))],
+      
+      [.rest(.half(dotted: false)), .rest(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)), .rest(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)) ],
+      
+      [.rest(.quarter(dotted: false)), .note(.eightTriplet(thirds: 1)), .note(.eightTriplet(thirds: 1)), .rest(.eightTriplet(thirds: 1)), .rest(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)), .rest(.quarter(dotted: false))],
+    ]
   
+    switch part {
+    case .Ride:
+      
+      return ride.randomElement()
+    case .Hihats:
+      return hihats.randomElement()
+    case .Bass:
+      return bassDrum.randomElement()
+    case .Snare:
+      return snare.randomElement()
+    }
+  }
 }
