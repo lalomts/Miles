@@ -10,8 +10,13 @@ import Foundation
 import AVFoundation
 import AudioToolbox
 
+/// This class encapsulates Apple's AVAudioUnitSampler and AVAudioSequencer in order to load MIDI soundbanks, and create and sequence MIDI events on CoreMIDI tracks and sequences.
+///
+/// The sampler audio unit can be configured by loading different types of instruments such as an .aupreset file, a DLS or SF2 sound bank. The output is a single stereo bus.
+
 public class Sampler {
   
+  /// The volume of the Sampler when connected to the AVAUdioEngine
   public var volume: Float {
     set {
       self.sampler.volume = newValue
@@ -26,6 +31,9 @@ public class Sampler {
   
   
   
+  /// Creates a new Sampler instance for the specified instrument voice.
+  ///
+  /// - Parameter voice: The desired voice type.
   public init(for voice: InstrumentVoice) {
     guard let url = Bundle.main.url(forResource: voice.rawValue, withExtension: "sf2")  else { fatalError("Could not load file") }
     
@@ -46,6 +54,11 @@ public class Sampler {
   }
   
   
+  /// Creates a new `MusicSequence`, sets its tempo and returns a `MusicTrack` where the instrument can use its arranging algorithm to create music lines.
+  ///
+  /// - Parameters:
+  ///   - tempo: The tempo that the music sequence will use.
+  ///   - arrangement: A codeblock that the instrument uses to create the arrangement.
   public func laySequence(atTempo tempo: Double, withArrangement arrangement: (MusicTrack) -> Void) {
     let newTrack = Track(withTempo: tempo)
     newTrack.populate(withArrangement: arrangement)
@@ -65,18 +78,21 @@ public class Sampler {
     }
   }
   
+  /// Starts the sequence playback
   public func startPlaying() {
     if let sequencer = sequencer {
       try! sequencer.start()
     }
   }
   
+  /// Stops the sequence playback
   public func stopPlaying() {
     if let sequencer = sequencer {
       sequencer.stop()
     }
   }
   
+  /// The MIDI bank types a sampler can use for the different sounds. 
   public enum MidiBankType  {
     case Melody
     case Percussion

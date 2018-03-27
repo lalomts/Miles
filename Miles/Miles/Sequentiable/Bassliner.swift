@@ -8,6 +8,7 @@
 
 import AudioToolbox
 
+/// Creates a walking baseline that works on top of a specified chord. 
 public struct Bassliner: Sequentiable {
   
   public let chord: Chord

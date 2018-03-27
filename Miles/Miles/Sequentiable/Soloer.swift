@@ -8,6 +8,7 @@
 
 import AudioToolbox
 
+/// Creates a melody line based on a random scale that works with each chord. 
 public struct Soloer: Sequentiable {
   
   public typealias HarmonyInfo = (harmonization: Harmonization, chord: Chord)

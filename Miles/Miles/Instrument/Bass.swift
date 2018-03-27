@@ -8,10 +8,14 @@
 
 import AudioToolbox
 
+/// A bass instrument that can be added to a sequence. It creates a walking bassline on top of the sequence chords.
 public struct Bass: Instrument {
   
   public var sampler: Sampler
   
+  /// Creates a new bass instrument instance.
+  ///
+  /// - Parameter volume: The volume for the instrument *(should be between 0 and 1)*. Default is 1.
   public init(volume: Float = 1) {
     self.sampler = Sampler(for: .bass)
     self.sampler.volume = volume

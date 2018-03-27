@@ -27,9 +27,11 @@ public struct ChordComper: Sequentiable {
         
       case .note(let dur):
         
-        for note in chord.notes(atOctave: Int.randomWith(floor: 1, ceil: 2), inversion: Int.randomWith(ceil: 2)) {
+        for _ in 2...Int.randomWith(floor: 2, ceil: chord.tones.maxIndex) {//Use at least 2 notes to render chords
+          let note = chord.notes(atOctave: Int.randomWith(floor: 1, ceil: 2), inversion: Int.randomWith(ceil: 2)).randomElement()
           note.addToTrack(track, onBeat: beat, duration: dur, velocity: Int.randomWith(floor: 30, ceil: 50))
         }
+        
         
         beat += dur.valueDouble
       case .rest(let dur):

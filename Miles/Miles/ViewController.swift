@@ -39,11 +39,11 @@ class TestViewController: UIViewController {
     button2.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     button2.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -40).isActive = true
     
-    let piano = Piano(for: .comping, volume: 0.6)
-    let pianoSoloer = Piano(for: .soloing, volume: 0.7)
+    let piano = Piano(for: .comping, volume: 0.8)
+    let pianoSoloer = Piano(for: .soloing, volume: 0.8)
     let drums = Drums(withParts: [.ride, .hihats, .snare, .bass])
-    let bass = Bass(volume: 1.5)
-    let harmonization = Harmonization(key: .Eflat, type: .harmonicMinor)
+    let bass = Bass()
+    let harmonization = Harmonization(key: .Csharp, type: .major)
     
     sequence = Sequence(harmonization: harmonization, tempo: 120, withInstruments: [piano, drums, bass, pianoSoloer])
     sequence.createArrangement()

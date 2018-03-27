@@ -18,6 +18,7 @@ public enum Duration {
   case eightTriplet(thirds: Float)
   
   
+  /// The value (in beats) for the specified duration.
   public var value: Float {
     switch self {
     case .whole(let dotted): return calculateValue(duration: 4, dotted: dotted) // Semibreve
@@ -31,6 +32,7 @@ public enum Duration {
     }
   }
  
+  /// The value (in beats) for the specified duration as a `Double`
   public var valueDouble: Double {
     return Double(self.value)
   }

@@ -8,6 +8,7 @@
 
 import AudioToolbox
 
+/// Creates a swing drum pattern with the drum parts specified (snare, hihats, etc.)
 public struct DrumSwinger: Sequentiable {
   
   public let parts: Set<DrumPart>
