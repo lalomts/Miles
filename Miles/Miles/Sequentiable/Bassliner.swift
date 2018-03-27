@@ -12,14 +12,14 @@ public struct Bassliner: Sequentiable {
   
   public let chord: Chord
   
-  public let rythmPattern: [Rythm.RythmBlock]
+  public let rythmPattern: Rythm.Pattern
   
   public init(chord: Chord) {
     self.chord = chord
     self.rythmPattern = Rythm.Bassline.pattern
   }
   
-  public func addToTrack(_ track: MusicTrack, onBeat beat: inout MusicTimeStamp) {
+  public func addNotes(toTrack track: MusicTrack, onBeat beat: inout MusicTimeStamp) {
     
     var internalBeat: Float = 1
     
@@ -38,11 +38,11 @@ public struct Bassliner: Sequentiable {
         }
         note.addToTrack(track, onBeat: beat, duration: dur)
         
-        internalBeat += dur.rawValue
-        beat += dur.rawValueDouble
+        internalBeat += dur.value
+        beat += dur.valueDouble
         
       case .rest(let dur):
-        beat += dur.rawValueDouble
+        beat += dur.valueDouble
       }
     }
   }

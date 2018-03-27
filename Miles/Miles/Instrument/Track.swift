@@ -11,7 +11,8 @@ import Foundation
 import AVFoundation
 import AudioToolbox
 
-public class Sequencer {
+public struct Track {
+  
   private var sequence: MusicSequence?
   
   public var data: Data? {
@@ -36,9 +37,6 @@ public class Sequencer {
   
   public init() {
     self.sequence = createSequence()
-    addTrack()
-    
-    
   }
   
   /// If possible, creates a new blank empty sequence
@@ -53,13 +51,12 @@ public class Sequencer {
     }
     
     if let musicSequence = s {
-      //      self.addTrack()
       return musicSequence
     }
     return nil
   }
   
-  public func addTrack() {
+  public func populate(withArrangement arrange: (MusicTrack) -> Void) {
     guard let sequence = sequence else { return }
     var t: MusicTrack?
     var status = MusicSequenceNewTrack(sequence, &t)
@@ -90,18 +87,24 @@ public class Sequencer {
         print("creating program change event \(status)")
       }
       
-      // Testing some notes 🎹
-      let harm = Harmonization(key: .A, type: .major)
-      var beat = MusicTimeStamp(0.0)
+      //Populate with a desired arrangement algorithm. 
+      arrange(track)
       
-      
-      for _ in 0...25 {
-        let chord = harm.chords.randomElement()
-        let comper = ChordComper(chord: chord)
-        print(chord)
-        comper.addToTrack(track, onBeat: &beat)
-      }
-      
+//      // Testing some notes 🎹
+//      let harm = Harmonization(key: .A, type: .major)
+//      var beat = MusicTimeStamp(0.0)
+//
+//
+//      for _ in 0...25 {
+//        let chord = harm.chords.randomElement()
+//        let swinger = DrumSwinger(withParts: [.Ride, .Bass, .Hihats, .Snare])
+//        swinger.addNotes(toTrack: track, onBeat: &beat)
+////        let comper = ChordComper(chord: chord)
+////        print(chord)
+////        comper.addNotes(toTrack: track, onBeat: &beat)
+//      }
+    } else {
+      fatalError("Could not create track")
     }
   }
 }

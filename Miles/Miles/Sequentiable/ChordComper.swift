@@ -11,14 +11,14 @@ import AudioToolbox
 public struct ChordComper: Sequentiable {
   
   public let chord: Chord
-  public let rythmPattern: [Rythm.RythmBlock]
+  public let rythmPattern: Rythm.Pattern
   
   public init(chord: Chord) {
     self.chord = chord
     self.rythmPattern = Rythm.Comping.pattern
   }
   
-  public func addToTrack(_ track: MusicTrack, onBeat beat: inout MusicTimeStamp) {
+  public func addNotes(toTrack track: MusicTrack, onBeat beat: inout MusicTimeStamp) {
     
     for block in rythmPattern {
       
@@ -30,9 +30,9 @@ public struct ChordComper: Sequentiable {
           note.addToTrack(track, onBeat: beat, duration: dur, velocity: Int.randomWith(floor: 30, ceil: 50))
         }
         
-        beat += dur.rawValueDouble
+        beat += dur.valueDouble
       case .rest(let dur):
-        beat += dur.rawValueDouble
+        beat += dur.valueDouble
       }
     }
   }

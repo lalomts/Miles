@@ -29,7 +29,7 @@ public struct Note {
                                note: midiValue.uint8,
                                velocity: velocity.uint8,
                                releaseVelocity: 10.uint8,
-                               duration: duration.rawValue)
+                               duration: duration.value)
     let status = MusicTrackNewMIDINoteEvent(track, beat, &mess)
     if status != noErr {
       print("creating new midi note event \(status)")

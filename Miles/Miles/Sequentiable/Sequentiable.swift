@@ -9,5 +9,5 @@ import AudioToolbox
 
 public protocol Sequentiable {
   
-  func addToTrack(_ track: MusicTrack, onBeat beat: inout MusicTimeStamp)
+  func addNotes(toTrack track: MusicTrack, onBeat beat: inout MusicTimeStamp)
 }
