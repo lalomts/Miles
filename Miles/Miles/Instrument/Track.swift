@@ -35,14 +35,15 @@ public struct Track {
     }
   }
   
-  public init() {
-    self.sequence = createSequence()
+  public init(withTempo tempo: Double) {
+    self.sequence = createSequence(withTempo: tempo)
   }
   
   /// If possible, creates a new blank empty sequence
   ///
   /// - Returns: The new sequence
-  func createSequence() -> MusicSequence? {
+  func createSequence(withTempo tempo: Double ) -> MusicSequence? {
+    
     var s: MusicSequence?
     let status = NewMusicSequence(&s)
     
@@ -51,9 +52,33 @@ public struct Track {
     }
     
     if let musicSequence = s {
+      //Set tempo track
+      var tempoTrack: MusicTrack?
+      MusicSequenceGetTempoTrack(musicSequence, &tempoTrack)
+      
+      if let tempoTrack = tempoTrack {
+        MusicTrackNewExtendedTempoEvent(tempoTrack, 0, tempo)
+      }
+
       return musicSequence
     }
     return nil
+  }
+  
+  private func getTrackLength(musicTrack:MusicTrack) -> MusicTimeStamp {
+    
+    //The time of the last music event in a music track, plus time required for note fade-outs and so on.
+    var trackLength:MusicTimeStamp = 0
+    var tracklengthSize:UInt32 = 0
+    let status = MusicTrackGetProperty(musicTrack,
+                                       UInt32(kSequenceTrackProperty_TrackLength),
+                                       &trackLength,
+                                       &tracklengthSize)
+    if status != OSStatus(noErr) {
+      print("Error getting track length \(status)")
+      return 0
+    }
+    return trackLength
   }
   
   public func populate(withArrangement arrange: (MusicTrack) -> Void) {
@@ -90,19 +115,6 @@ public struct Track {
       //Populate with a desired arrangement algorithm. 
       arrange(track)
       
-//      // Testing some notes 🎹
-//      let harm = Harmonization(key: .A, type: .major)
-//      var beat = MusicTimeStamp(0.0)
-//
-//
-//      for _ in 0...25 {
-//        let chord = harm.chords.randomElement()
-//        let swinger = DrumSwinger(withParts: [.Ride, .Bass, .Hihats, .Snare])
-//        swinger.addNotes(toTrack: track, onBeat: &beat)
-////        let comper = ChordComper(chord: chord)
-////        print(chord)
-////        comper.addNotes(toTrack: track, onBeat: &beat)
-//      }
     } else {
       fatalError("Could not create track")
     }

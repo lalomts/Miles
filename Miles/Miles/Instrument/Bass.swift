@@ -12,15 +12,13 @@ public struct Bass: Instrument {
   
   public var sampler: Sampler
   
-  public var volume: Float
-  
-  public init() {
+  public init(volume: Float = 1) {
     self.sampler = Sampler(for: .bass)
-    self.volume = 1
+    self.sampler.volume = volume
   }
   
-  public func createArrangementFor(progression: Sequence.Progression) {
-    sampler.laySequence { (track) in
+  public func createArrangementFor(progression: Sequence.Progression, atTempo tempo: Double) {
+    sampler.laySequence(atTempo: tempo) { (track) in
       var beat = MusicTimeStamp(0.0)
       for chordIndex in progression.steps {
         

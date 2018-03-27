@@ -102,7 +102,7 @@ public struct Chord: CustomStringConvertible {
   }
   
   public var description: String {
-    return "\(self.root, self.quality.rawValue): \(self.tones)"
+    return "\(self.root)\(self.quality.rawValue)"
   }
   
 }

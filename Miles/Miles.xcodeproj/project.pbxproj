@@ -15,6 +15,7 @@
 		0911D9512069ADEC004E7225 /* Piano.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911D9502069ADEC004E7225 /* Piano.swift */; };
 		0911D9552069CD86004E7225 /* Drums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911D9542069CD86004E7225 /* Drums.swift */; };
 		0911D9582069D3E3004E7225 /* Bass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911D9572069D3E3004E7225 /* Bass.swift */; };
+		0911D95A2069D98F004E7225 /* Soloer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911D9592069D98F004E7225 /* Soloer.swift */; };
 		091350C12062C45200D909B1 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091350C02062C45200D909B1 /* Track.swift */; };
 		092AD78E2060CBE500E98981 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AD78D2060CBE500E98981 /* AppDelegate.swift */; };
 		092AD7902060CBE500E98981 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AD78F2060CBE500E98981 /* ViewController.swift */; };
@@ -47,6 +48,7 @@
 		0911D9502069ADEC004E7225 /* Piano.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piano.swift; sourceTree = "<group>"; };
 		0911D9542069CD86004E7225 /* Drums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drums.swift; sourceTree = "<group>"; };
 		0911D9572069D3E3004E7225 /* Bass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bass.swift; sourceTree = "<group>"; };
+		0911D9592069D98F004E7225 /* Soloer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Soloer.swift; sourceTree = "<group>"; };
 		091350C02062C45200D909B1 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		092AD78A2060CBE500E98981 /* Miles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Miles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		092AD78D2060CBE500E98981 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				09ACBEB120687BBC00ACBE99 /* Rythm.swift */,
 				090936892064213900EBA1BF /* Note.swift */,
 				09ACBEAD20685EF000ACBE99 /* ChordComper.swift */,
+				0911D9592069D98F004E7225 /* Soloer.swift */,
 				09ACBEB72069665100ACBE99 /* DrumSwinger.swift */,
 				09ACBEB32068C95900ACBE99 /* Bassliner.swift */,
 			);
@@ -252,6 +255,7 @@
 				09964A20206613B7004EEF75 /* ArrayExtensions.swift in Sources */,
 				099307F920658064004B8BA1 /* Interval.swift in Sources */,
 				0911D9512069ADEC004E7225 /* Piano.swift in Sources */,
+				0911D95A2069D98F004E7225 /* Soloer.swift in Sources */,
 				09ACBEB6206958D700ACBE99 /* Instrument.swift in Sources */,
 				09ACBEB82069665200ACBE99 /* DrumSwinger.swift in Sources */,
 				09964A222066233D004EEF75 /* Sequence.swift in Sources */,

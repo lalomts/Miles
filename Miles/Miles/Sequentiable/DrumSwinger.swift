@@ -37,27 +37,27 @@ public struct DrumSwinger: Sequentiable {
   }
   
   public enum DrumPart {
-    case Hihats
-    case Bass
-    case Snare
-    case Ride
+    case hihats
+    case bass
+    case snare
+    case ride
     
     /// Returns the correct note(MIDI Value) for the specified drum part
     public var noteValue: Int {
       switch self {
-      case .Hihats: return [42, 44].randomElement()
-      case .Ride: return 51
-      case .Bass: return 36
-      case .Snare: return 38
+      case .hihats: return [42, 44].randomElement()
+      case .ride: return 51
+      case .bass: return 36
+      case .snare: return 38
       }
     }
     
     public var preferedVelocity: Int {
       switch self {
-      case .Hihats: return Int.randomWith(floor: 45, ceil: 55)
-      case .Ride: return Int.randomWith(floor: 30, ceil: 35)
-      case .Bass: return Int.randomWith(floor: 40, ceil: 50)
-      case .Snare: return Int.randomWith(floor: 30, ceil: 45)
+      case .hihats: return Int.randomWith(floor: 45, ceil: 55)
+      case .ride: return Int.randomWith(floor: 30, ceil: 35)
+      case .bass: return Int.randomWith(floor: 40, ceil: 50)
+      case .snare: return Int.randomWith(floor: 30, ceil: 45)
       }
     }
   }

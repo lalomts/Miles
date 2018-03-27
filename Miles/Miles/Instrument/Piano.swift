@@ -18,21 +18,23 @@ public struct Piano: Instrument {
   public var sampler: Sampler
   
   public var type: PianoType
-  
-  public var volume: Float
-  
-  public init(for type: PianoType) {
     
+  public init(for type: PianoType, volume: Float = 1) {
     self.sampler  = Sampler(for: .piano)
     self.type = type
-    self.volume = 1
+    self.sampler.volume = volume
   }
   
-  public func createArrangementFor(progression: Sequence.Progression) {
-    sampler.laySequence { (track) in
+  public func createArrangementFor(progression: Sequence.Progression, atTempo tempo: Double) {
+    sampler.laySequence(atTempo: tempo) { (track) in
       var beat = MusicTimeStamp(0.0)
       for chordIndex in progression.steps {
-        let arranger = ChordComper(chord: progression.harmonization.chords[chordIndex])
+        let arranger: Sequentiable
+        if self.type == .comping {
+          arranger = ChordComper(chord: progression.harmonization.chords[chordIndex])
+        } else {
+          arranger = Soloer(harmonyInfo: (progression.harmonization, progression.harmonization.chords[chordIndex]))
+        }
         arranger.addNotes(toTrack: track, onBeat: &beat)
       }
     }

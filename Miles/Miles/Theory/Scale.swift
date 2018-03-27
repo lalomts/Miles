@@ -66,7 +66,7 @@ public enum Scale: Int {
   }
   
   public static var allMajor: [Scale] {
-    return [.major, .majorPentatonic, .majorBebop, .bebopDominant, .spanishGypsy]
+    return [.major, .majorPentatonic, .majorBebop]
   }
   
   public static var allMinor: [Scale] {

@@ -22,10 +22,8 @@ public enum InstrumentVoice: String {
 public protocol Instrument {
   
   var sampler: Sampler { get set }
-    
-  var volume: Float { get set }
-  
-  func createArrangementFor(progression: Sequence.Progression)
+      
+  func createArrangementFor(progression: Sequence.Progression, atTempo tempo: Double)
   
   func play()
   

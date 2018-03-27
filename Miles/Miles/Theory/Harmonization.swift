@@ -46,9 +46,11 @@ public struct Harmonization {
   
   public let chords: [Chord]
   public let scale: Scale
+  public let key: Tone
   
   public init(key: Tone, type: HarmonizationType) {
     self.scale = type.scale
+    self.key = key
     let scaleTones = type.scale.tones(forKey: key)
     let chordQualities = type.chordQualities
     

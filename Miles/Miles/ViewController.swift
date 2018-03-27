@@ -39,12 +39,13 @@ class TestViewController: UIViewController {
     button2.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     button2.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -40).isActive = true
     
-    let piano = Piano(for: .comping)
-    let drums = Drums(withParts: [.Ride, .Hihats, .Snare, .Bass])
-    let bass = Bass()
-    let harmonization = Harmonization(key: .A, type: .major)
+    let piano = Piano(for: .comping, volume: 0.6)
+    let pianoSoloer = Piano(for: .soloing, volume: 0.7)
+    let drums = Drums(withParts: [.ride, .hihats, .snare, .bass])
+    let bass = Bass(volume: 1.5)
+    let harmonization = Harmonization(key: .Eflat, type: .harmonicMinor)
     
-    sequence = Sequence(harmonization: harmonization, withInstruments: [piano, drums, bass])
+    sequence = Sequence(harmonization: harmonization, tempo: 120, withInstruments: [piano, drums, bass, pianoSoloer])
     sequence.createArrangement()
   }
   

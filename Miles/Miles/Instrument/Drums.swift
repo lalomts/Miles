@@ -12,18 +12,16 @@ public struct Drums: Instrument {
   
   public var sampler: Sampler
   
-  public var volume: Float
-  
   private var arranger: DrumSwinger
   
-  public init(withParts parts: Set<DrumSwinger.DrumPart>) {
+  public init(withParts parts: Set<DrumSwinger.DrumPart>, volume: Float = 1) {
     self.sampler = Sampler(for: .drums)
     self.arranger = DrumSwinger(withParts: parts)
-    self.volume = 0.6
+    self.sampler.volume = volume
   }
   
-  public func createArrangementFor(progression: Sequence.Progression) {
-    self.sampler.laySequence { (track) in
+  public func createArrangementFor(progression: Sequence.Progression, atTempo tempo: Double) {
+    sampler.laySequence(atTempo: tempo) { (track) in
       var beat = MusicTimeStamp(0.0)
       for _ in progression.steps {
         self.arranger.addNotes(toTrack: track, onBeat: &beat)

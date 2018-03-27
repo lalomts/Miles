@@ -12,26 +12,18 @@ import AudioToolbox
 
 public class Sampler {
   
-  public enum MidiBankType  {
-    case Melody
-    case Percussion
-    case DefaultBankLSB
-
-    public var value: UInt8 {
-      switch self {
-      case .Melody: return kAUSampler_DefaultMelodicBankMSB.uint8
-      case .Percussion: return kAUSampler_DefaultPercussionBankMSB.uint8
-      case .DefaultBankLSB: return kAUSampler_DefaultBankLSB.uint8
-      }
+  public var volume: Float {
+    set {
+      self.sampler.volume = newValue
     }
-    
-    public static let defaultProgram: UInt8 = 0
-    
+    get {
+      return self.sampler.volume
+    }
   }
+  private let engine: AVAudioEngine
+  private let sampler: AVAudioUnitSampler
+  private var sequencer: AVAudioSequencer?
   
-  let engine: AVAudioEngine
-  let sampler: AVAudioUnitSampler
-  var sequencer: AVAudioSequencer?
   
   
   public init(for voice: InstrumentVoice) {
@@ -49,28 +41,24 @@ public class Sampler {
     }
     
     self.engine.attach(self.sampler)
-    self.engine.connect(self.sampler, to: self.engine.mainMixerNode, format: nil)
+    self.engine.connect(self.sampler, to: self.engine.mainMixerNode, format: sampler.outputFormat(forBus: 0))
     try! self.engine.start()
   }
   
   
-  public func laySequence(withArrangement arrangement: (MusicTrack) -> Void) {
-    
-    let newTrack = Track()
+  public func laySequence(atTempo tempo: Double, withArrangement arrangement: (MusicTrack) -> Void) {
+    let newTrack = Track(withTempo: tempo)
     newTrack.populate(withArrangement: arrangement)
     
     do {
-      
       self.sequencer = AVAudioSequencer(audioEngine: engine)
       
       if let data = newTrack.data {
         
         try self.sequencer?.load(from: data, options: [])
-        
         self.sequencer?.prepareToPlay()
       }
     }
-    
     catch let error as NSError {
         print("\(error.localizedDescription)")
         return
@@ -87,6 +75,23 @@ public class Sampler {
     if let sequencer = sequencer {
       sequencer.stop()
     }
+  }
+  
+  public enum MidiBankType  {
+    case Melody
+    case Percussion
+    case DefaultBankLSB
+    
+    public var value: UInt8 {
+      switch self {
+      case .Melody: return kAUSampler_DefaultMelodicBankMSB.uint8
+      case .Percussion: return kAUSampler_DefaultPercussionBankMSB.uint8
+      case .DefaultBankLSB: return kAUSampler_DefaultBankLSB.uint8
+      }
+    }
+    
+    public static let defaultProgram: UInt8 = 0
+    
   }
   
   

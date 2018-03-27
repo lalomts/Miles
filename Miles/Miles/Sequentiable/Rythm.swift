@@ -69,9 +69,8 @@ public enum Rythm {
   private func randomBassline() -> Pattern {
     let rythms: [Pattern] = [
       [.note(.quarter(dotted: false)), .note(.quarter(dotted: false)), .note(.quarter(dotted: false)), .note(.quarter(dotted: false)) ],
-//      [.note(.quarter), .note(.quarter), .note(.quarter), .note(.quarter) ],
-//      [.note(.quarter), .note(.quarter), .note(.quarter), .rest(.sixteenth), .note(.sixteenth), .note(.eighth)],
-//      [.note(.quarter), .note(.eighth), .note(.eighth), .note(.quarter), .note(.quarter)]
+      [.note(.quarter(dotted: false)), .note(.quarter(dotted: false)), .note(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)), .note(.quarter(dotted: false)) ]
+
     ]
     return rythms.randomElement()
   }
@@ -101,10 +100,7 @@ public enum Rythm {
       [.note(.quarter(dotted: false)), .note(.quarter(dotted: false)), .note(.quarter(dotted: false)), .note(.quarter(dotted: false))  ],
       
       [.note(.quarter(dotted: false)), .rest(.quarter(dotted: false)), .note(.quarter(dotted: false)), .rest(.quarter(dotted: false))  ],
-
-//      [.rest(.eightTriplet(thirds: 1)), .note(.eightTriplet(thirds: 1)), .rest(.eightTriplet(thirds: 1)), .rest(.quarter(dotted: false)), .rest(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)), .rest(.quarter(dotted: false))],
-//
-//      [.rest(.quarter(dotted: false)), .rest(.eightTriplet(thirds: 2)), .note(.eightTriplet(thirds: 1)), .rest(.quarter(dotted: false)), .note(.eightTriplet(thirds: 1)), .rest(.eightTriplet(thirds: 2))]
+      
     ]
     
     let snare: [Pattern] = [
@@ -118,14 +114,14 @@ public enum Rythm {
     ]
   
     switch part {
-    case .Ride:
+    case .ride:
       
       return ride.randomElement()
-    case .Hihats:
+    case .hihats:
       return hihats.randomElement()
-    case .Bass:
+    case .bass:
       return bassDrum.randomElement()
-    case .Snare:
+    case .snare:
       return snare.randomElement()
     }
   }
