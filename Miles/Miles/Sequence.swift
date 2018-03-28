@@ -7,6 +7,7 @@
 //
 
 import AVFoundation
+import SpriteKit
 
 /** A jazz improv sequence that orchestrates the different instruments to create music.
 
@@ -39,14 +40,14 @@ public class Sequence {
   /// The `AVAudioEngine` responsible for the sound playback
   public let audioEngine: AVAudioEngine
   
-  /// The `Instruments` that the sequence will use to create the improv.
-  public let instruments: [Instrument]
-  
   /// The harmonization that the improv session will be based on. *(e.g. E flat harmonic minor)*
   public let harmonization: Harmonization
   
   /// The tempo the improv session will follow
   public let tempo: Double
+  
+  /// The `Instruments` that the sequence will use to create the improv.
+  public var instruments: [Instrument]
   
   /// The indexes and order of the chords (inside the harmonization) the improv will follow.
   public var progressionSteps: [Int]
@@ -83,6 +84,15 @@ public class Sequence {
   public func stopPlaying() {
     for instrument in instruments {
       instrument.stop()
+    }
+  }
+  
+  
+  // MARK: - Sequence drawing
+  public func setDrawingCanvas(_ canvas: MilesCanvas) {
+    canvas.tempo = self.tempo
+    for i in 0...instruments.maxIndex {
+      instruments[i].canvas = canvas
     }
   }
   

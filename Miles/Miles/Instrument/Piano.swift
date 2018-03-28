@@ -5,12 +5,12 @@
 //  Created by Lalo Martínez on 3/26/18.
 //  Copyright © 2018 Lalo Martínez. All rights reserved.
 //
-
 import AudioToolbox
+import SpriteKit
 
 /// A piano instrument that can be added to a sequence. It can be used to play a *comping rythm* or for *soloing.*
-public struct Piano: Instrument {
-  
+public class Piano: Instrument {
+
   /// The purpose of the piano instrument (determines what type of music it will generate)
   ///
   /// - comping: Creates a comping rythm based on the harmonization chords
@@ -22,7 +22,9 @@ public struct Piano: Instrument {
   
   public var sampler: Sampler
   
-  public var type: PianoType
+  public var arranger: Improviser
+  
+  public var canvas: MilesCanvas?
     
   /// Creates a new Piano instrument instance.
   ///
@@ -31,32 +33,34 @@ public struct Piano: Instrument {
   ///   - volume: The volume for the instrument *(should be between 0 and 1)*. Default is 1. 
   public init(for type: PianoType, volume: Float = 1) {
     self.sampler  = Sampler(for: .piano)
-    self.type = type
     self.sampler.volume = volume
+    
+    //Create the desired arranger
+    if type == .comping {
+      arranger = ChordComper()
+    } else {
+      arranger = Soloer()
+    }
+    
+    arranger.delegate = self
   }
   
   public func createArrangementFor(progression: Sequence.Progression, atTempo tempo: Double) {
     sampler.laySequence(atTempo: tempo) { (track) in
       var beat = MusicTimeStamp(0.0)
       for chordIndex in progression.steps {
-        let arranger: Sequentiable
-        if self.type == .comping {
-          arranger = ChordComper(chord: progression.harmonization.chords[chordIndex])
-        } else {
-          arranger = Soloer(harmonyInfo: (progression.harmonization, progression.harmonization.chords[chordIndex]))
-        }
-        arranger.addNotes(toTrack: track, onBeat: &beat)
+
+        arranger.improviseNotes(toTrack: track, onBeat: &beat,
+                                basedOn: (progression.harmonization, progression.harmonization.chords[chordIndex]))
       }
     }
   }
   
-  public func play() {
-    self.sampler.startPlaying()
-  }
+  // MARK: - ImproviserDelegate
   
-  public func stop() {
-    self.sampler.stopPlaying()
+
+  public func addedNote(withMidiValue: Int, atBeat: Double, withDuration: Double) {
+    canvas?.queueNote(delay: atBeat, lifespan: withDuration)
   }
-  
 }
 

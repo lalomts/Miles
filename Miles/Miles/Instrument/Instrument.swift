@@ -20,9 +20,11 @@ public enum InstrumentVoice: String {
   }
 }
 
-public protocol Instrument {
+public protocol Instrument: ImproviserDelegate, Drawable {
   
   var sampler: Sampler { get set }
+  
+  var arranger: Improviser { get }
       
   /// Uses the instrument's algorithm to create a music sequence based on the specified harmonization, chords and instrument type.
   ///
@@ -39,4 +41,15 @@ public protocol Instrument {
   /// Stops the isnstrument's playback
   func stop()
 
+}
+
+extension Instrument {
+  
+  public func play() {
+    self.sampler.startPlaying()
+  }
+  
+  public func stop() {
+    self.sampler.stopPlaying()
+  }
 }

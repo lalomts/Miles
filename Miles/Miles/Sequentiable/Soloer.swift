@@ -9,34 +9,51 @@
 import AudioToolbox
 
 /// Creates a melody line based on a random scale that works with each chord. 
-public struct Soloer: Sequentiable {
+public class Soloer: Improviser {
   
-  public typealias HarmonyInfo = (harmonization: Harmonization, chord: Chord)
+  public var delegate: ImproviserDelegate?
   
-  public let harmonyInfo: HarmonyInfo
+  public let canOverlapNotes: Bool
   
-  public init(harmonyInfo: HarmonyInfo) {
-    self.harmonyInfo = harmonyInfo
+  public init(canOverlapNotes:Bool = true) {
+    self.canOverlapNotes = canOverlapNotes
   }
   
-  public func addNotes(toTrack track: MusicTrack, onBeat beat: inout MusicTimeStamp) {
-    
+  public func improviseNotes(toTrack track: MusicTrack, onBeat beat: inout MusicTimeStamp, basedOn harmony: Improviser.Harmony) {
+  
     var internalBeat = MusicTimeStamp(0.0)
-    var availableScales = harmonyInfo.chord.quality.improvScales
-    availableScales.append( harmonyInfo.harmonization.scale)
+    
+    var availableScales = harmony.chord.quality.improvScales
+    
+    availableScales.append(harmony.harmonization.scale)
     
     let improvScale = availableScales.randomElement()
-    print("Will solo in \(harmonyInfo.harmonization.key)\(improvScale) over \(harmonyInfo.chord)")
+    
+    print("Will solo in \(harmony.harmonization.key)\(improvScale) over \(harmony.chord)")
+    
     while internalBeat <= 4 {
+      
       let durations: [Duration] = [.half(dotted: false), .quarter(dotted: false), .eighth(dotted: false)]
       
-      if Int.randomWith(ceil: 5) != 0 { // 1/random probability of having a note
+      if Int.randomWith(ceil: 5) != 0 { // 1/6 = probability of not having a note
         
-        let note = Note.init(tone: improvScale.tones(forKey: harmonyInfo.harmonization.key).randomElement(),
+        let duration = durations.randomElement()
+        
+        let realBeat = beat + internalBeat
+        
+        let note = Note.init(tone: improvScale.tones(forKey: harmony.harmonization.key).randomElement(),
                              octave: Int.randomWith(floor: 3, ceil: 4))
-        note.addToTrack(track, onBeat: beat + internalBeat, duration: durations.randomElement(), velocity: Int.randomWith(floor: 40, ceil: 60))
+        
+        note.addToTrack(track, onBeat: realBeat, duration: duration, velocity: Int.randomWith(floor: 40, ceil: 60))
+        
+        self.delegate?.addedNote(withMidiValue: note.midiValue, atBeat: realBeat, withDuration: duration.valueDouble)
+        
+        //If overlapping notes is permitted, advances a random duration, if not, advances the note's duration.
+        internalBeat += canOverlapNotes ? durations.randomElement().valueDouble : duration.valueDouble
+      } else {
+        //If theres no note and should add a rest.
+        internalBeat += durations.randomElement().valueDouble
       }
-      internalBeat += durations.randomElement().valueDouble
     }
     beat += 4
   }

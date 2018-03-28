@@ -9,7 +9,9 @@
 import AudioToolbox
 
 /// Creates a swing drum pattern with the drum parts specified (snare, hihats, etc.)
-public struct DrumSwinger: Sequentiable {
+public class DrumSwinger: Improviser {
+  
+  public var delegate: ImproviserDelegate?
   
   public let parts: Set<DrumPart>
   
@@ -17,20 +19,30 @@ public struct DrumSwinger: Sequentiable {
     self.parts = parts
   }
   
-  public func addNotes(toTrack track: MusicTrack, onBeat beat: inout MusicTimeStamp) {
-    
+  public func improviseNotes(toTrack track: MusicTrack, onBeat beat: inout MusicTimeStamp, basedOn harmony: Improviser.Harmony) {
+
     for part in parts {
       
       var partBeat = MusicTimeStamp(0.0)
       
       for block in Rythm.DrumBeat(part: part).pattern {
+        
         switch block {
           
         case .note(let dur):
-          Note.fromMidiValue(part.noteValue).addToTrack(track, onBeat: beat + partBeat, duration: dur, velocity: part.preferedVelocity)
+          
+          let realBeat = beat + partBeat
+          
+          Note.fromMidiValue(part.noteValue).addToTrack(track, onBeat: realBeat, duration: dur, velocity: part.preferedVelocity)
+          
+          self.delegate?.addedNote(withMidiValue: part.noteValue, atBeat: realBeat, withDuration: dur.valueDouble)
+          
           partBeat += dur.valueDouble
+          
         case .rest(let dur):
+          
           partBeat += dur.valueDouble
+          
         }
       }
     }

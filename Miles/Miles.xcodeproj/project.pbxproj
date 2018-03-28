@@ -10,7 +10,7 @@
 		0909368A2064213900EBA1BF /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090936892064213900EBA1BF /* Note.swift */; };
 		0909368C206429FD00EBA1BF /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909368B206429FD00EBA1BF /* Duration.swift */; };
 		0909368E20642CA800EBA1BF /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909368D20642CA800EBA1BF /* Tone.swift */; };
-		0909369020643EE500EBA1BF /* Sequentiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909368F20643EE500EBA1BF /* Sequentiable.swift */; };
+		0909369020643EE500EBA1BF /* Improviser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909368F20643EE500EBA1BF /* Improviser.swift */; };
 		0911D94D20698642004E7225 /* drums.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 0911D94C20698642004E7225 /* drums.sf2 */; };
 		0911D9512069ADEC004E7225 /* Piano.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911D9502069ADEC004E7225 /* Piano.swift */; };
 		0911D9552069CD86004E7225 /* Drums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911D9542069CD86004E7225 /* Drums.swift */; };
@@ -23,6 +23,8 @@
 		092AD7982060CBE500E98981 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092AD7962060CBE500E98981 /* LaunchScreen.storyboard */; };
 		092AD7A02060DC9D00E98981 /* Sampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AD79F2060DC9D00E98981 /* Sampler.swift */; };
 		092AD7A62060EDBE00E98981 /* piano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 092AD7A52060EDBE00E98981 /* piano.sf2 */; };
+		092F338E206B16CC005546FC /* MilesCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F338D206B16CC005546FC /* MilesCanvas.swift */; };
+		092F3396206B8692005546FC /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F3395206B8692005546FC /* Drawable.swift */; };
 		099307F720657CD4004B8BA1 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099307F620657CD4004B8BA1 /* Scale.swift */; };
 		099307F920658064004B8BA1 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099307F820658064004B8BA1 /* Interval.swift */; };
 		099307FC2065D919004B8BA1 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099307FB2065D919004B8BA1 /* IntExtensions.swift */; };
@@ -43,7 +45,7 @@
 		090936892064213900EBA1BF /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		0909368B206429FD00EBA1BF /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 		0909368D20642CA800EBA1BF /* Tone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tone.swift; sourceTree = "<group>"; };
-		0909368F20643EE500EBA1BF /* Sequentiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequentiable.swift; sourceTree = "<group>"; };
+		0909368F20643EE500EBA1BF /* Improviser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Improviser.swift; sourceTree = "<group>"; };
 		0911D94C20698642004E7225 /* drums.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = drums.sf2; sourceTree = "<group>"; };
 		0911D9502069ADEC004E7225 /* Piano.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piano.swift; sourceTree = "<group>"; };
 		0911D9542069CD86004E7225 /* Drums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drums.swift; sourceTree = "<group>"; };
@@ -58,6 +60,8 @@
 		092AD7992060CBE500E98981 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		092AD79F2060DC9D00E98981 /* Sampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sampler.swift; sourceTree = "<group>"; };
 		092AD7A52060EDBE00E98981 /* piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = piano.sf2; sourceTree = "<group>"; };
+		092F338D206B16CC005546FC /* MilesCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilesCanvas.swift; sourceTree = "<group>"; };
+		092F3395206B8692005546FC /* Drawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Drawable.swift; path = ../../../../../../.Trash/Drawable.swift; sourceTree = "<group>"; };
 		099307F620657CD4004B8BA1 /* Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
 		099307F820658064004B8BA1 /* Interval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
 		099307FB2065D919004B8BA1 /* IntExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtensions.swift; sourceTree = "<group>"; };
@@ -120,8 +124,10 @@
 			isa = PBXGroup;
 			children = (
 				092AD78F2060CBE500E98981 /* ViewController.swift */,
+				092F338D206B16CC005546FC /* MilesCanvas.swift */,
 				092AD78D2060CBE500E98981 /* AppDelegate.swift */,
 				09964A212066233D004EEF75 /* Sequence.swift */,
+				092F3395206B8692005546FC /* Drawable.swift */,
 				0911D9562069D3D7004E7225 /* Instrument */,
 				09ACBEB92069684800ACBE99 /* Sequentiable */,
 				099307FA20658844004B8BA1 /* Theory */,
@@ -166,7 +172,7 @@
 		09ACBEB92069684800ACBE99 /* Sequentiable */ = {
 			isa = PBXGroup;
 			children = (
-				0909368F20643EE500EBA1BF /* Sequentiable.swift */,
+				0909368F20643EE500EBA1BF /* Improviser.swift */,
 				09ACBEB120687BBC00ACBE99 /* Rythm.swift */,
 				090936892064213900EBA1BF /* Note.swift */,
 				09ACBEAD20685EF000ACBE99 /* ChordComper.swift */,
@@ -263,16 +269,18 @@
 				092AD7902060CBE500E98981 /* ViewController.swift in Sources */,
 				0911D9582069D3E3004E7225 /* Bass.swift in Sources */,
 				091350C12062C45200D909B1 /* Track.swift in Sources */,
+				092F338E206B16CC005546FC /* MilesCanvas.swift in Sources */,
 				09ACBEAE20685EF000ACBE99 /* ChordComper.swift in Sources */,
 				09ACBEB220687BBC00ACBE99 /* Rythm.swift in Sources */,
 				0911D9552069CD86004E7225 /* Drums.swift in Sources */,
+				092F3396206B8692005546FC /* Drawable.swift in Sources */,
 				099307FC2065D919004B8BA1 /* IntExtensions.swift in Sources */,
 				0909368C206429FD00EBA1BF /* Duration.swift in Sources */,
 				09964A1E2066104E004EEF75 /* Chord.swift in Sources */,
 				0909368E20642CA800EBA1BF /* Tone.swift in Sources */,
 				09964A2420669BE4004EEF75 /* Harmonization.swift in Sources */,
 				09ACBEB42068C95900ACBE99 /* Bassliner.swift in Sources */,
-				0909369020643EE500EBA1BF /* Sequentiable.swift in Sources */,
+				0909369020643EE500EBA1BF /* Improviser.swift in Sources */,
 				092AD78E2060CBE500E98981 /* AppDelegate.swift in Sources */,
 				099307F720657CD4004B8BA1 /* Scale.swift in Sources */,
 				092AD7A02060DC9D00E98981 /* Sampler.swift in Sources */,

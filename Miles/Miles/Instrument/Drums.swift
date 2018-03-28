@@ -7,13 +7,16 @@
 //
 
 import AudioToolbox
+import SpriteKit
 
 /// A Drum Kit instrument that can be added to a sequence. It can use different drum elements like hihats, ride, snare and/or bass drum.
-public struct Drums: Instrument {
+public class Drums: Instrument {  
   
   public var sampler: Sampler
   
-  private var arranger: DrumSwinger
+  public let arranger: Improviser
+  
+  public var canvas: MilesCanvas?
   
   /// Creates a new Drums instance with the specified parts.
   ///
@@ -30,17 +33,13 @@ public struct Drums: Instrument {
     sampler.laySequence(atTempo: tempo) { (track) in
       var beat = MusicTimeStamp(0.0)
       for _ in progression.steps {
-        self.arranger.addNotes(toTrack: track, onBeat: &beat)
+        self.arranger.improviseNotes(toTrack: track, onBeat: &beat, //The chord does not matter here.
+                                     basedOn: (progression.harmonization, progression.harmonization.chords.randomElement()))
       }
     }
   }
   
-  public func play() {
-    self.sampler.startPlaying()
+  public func addedNote(withMidiValue: Int, atBeat: Double, withDuration: Double) {
+    
   }
-  
-  public func stop() {
-    self.sampler.stopPlaying()
-  }
-  
 }

@@ -32,7 +32,7 @@ public struct Note {
                                duration: duration.value)
     let status = MusicTrackNewMIDINoteEvent(track, beat, &mess)
     if status != noErr {
-      print("creating new midi note event \(status)")
+      print("Error creating new midi note event \(status)")
     }
   }
   

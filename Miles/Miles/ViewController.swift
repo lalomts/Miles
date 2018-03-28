@@ -7,63 +7,53 @@
 //
 
 import UIKit
+import SpriteKit
 
 class TestViewController: UIViewController {
   
   var sequence: Sequence!
+  var spriteview: SKView!
 
   override func loadView() {
     super.loadView()
     
-    self.view.backgroundColor = .white
-    
-    let button = UIButton()
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.setTitle("Touch", for: .normal)
-    button.setTitleColor(.black, for: .normal)
-    button.addTarget(self, action: #selector(touched1), for: .touchDown)
-    button.addTarget(self, action: #selector(leaved1), for: .touchUpInside)
-    self.view.addSubview(button)
-    
-    button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-    button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-    
-    let button2 = UIButton()
-    button2.translatesAutoresizingMaskIntoConstraints = false
-    button2.setTitle("Touch2", for: .normal)
-    button2.setTitleColor(.black, for: .normal)
-    button2.addTarget(self, action: #selector(touched2), for: .touchDown)
-    button2.addTarget(self, action: #selector(leaved2), for: .touchUpInside)
-    self.view.addSubview(button2)
-    
-    button2.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-    button2.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -40).isActive = true
+    view.backgroundColor = .red
     
     let piano = Piano(for: .comping, volume: 0.8)
-    let pianoSoloer = Piano(for: .soloing, volume: 0.8)
+    let pianoSoloer = Piano(for: .soloing, volume: 0.6)
     let drums = Drums(withParts: [.ride, .hihats, .snare, .bass])
     let bass = Bass()
-    let harmonization = Harmonization(key: .Csharp, type: .major)
+    let harmonization = Harmonization(key: .Bflat, type: .harmonicMinor)
     
-    sequence = Sequence(harmonization: harmonization, tempo: 120, withInstruments: [piano, drums, bass, pianoSoloer])
-    sequence.createArrangement()
+    sequence = Sequence(harmonization: harmonization, tempo: 120, withInstruments: [ drums, bass, pianoSoloer])
+    
+    let tap = UITapGestureRecognizer(target: self, action: #selector(leaved2))
+    self.view.addGestureRecognizer(tap)
+    
+    spriteview = SKView()
+    spriteview.translatesAutoresizingMaskIntoConstraints = false
+    self.view.addSubview(spriteview)
+    
+    spriteview.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+    spriteview.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
+    spriteview.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+    spriteview.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
   }
   
-  @objc private func touched1() {
-//    sampler.startNote(note: 60)
-    
+  
+  override func viewDidLoad() {
+    let scene = MilesCanvas()
+    spriteview.showsFPS = true
+    spriteview.showsNodeCount = true
+    spriteview.ignoresSiblingOrder = true
+    scene.scaleMode = .resizeFill
+    sequence.setDrawingCanvas(scene)
+    spriteview.presentScene(scene)
   }
   
-  @objc func leaved1() {
-//    sampler.stopNote(note: 60)
-  }
-  
-  @objc private func touched2() {
-//    sampler.startPlaying()
-    
-  }
   
   @objc func leaved2() {
+    sequence.createArrangement()
     sequence.startPlaying()
   }
 

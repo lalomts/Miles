@@ -7,16 +7,22 @@
 //
 
 import AudioToolbox
+import SpriteKit
 
 /// A bass instrument that can be added to a sequence. It creates a walking bassline on top of the sequence chords.
-public struct Bass: Instrument {
+public class Bass: Instrument {
   
   public var sampler: Sampler
+  
+  public let arranger: Improviser
+  
+  public var canvas: MilesCanvas?
   
   /// Creates a new bass instrument instance.
   ///
   /// - Parameter volume: The volume for the instrument *(should be between 0 and 1)*. Default is 1.
   public init(volume: Float = 1) {
+    arranger = Bassliner()
     self.sampler = Sampler(for: .bass)
     self.sampler.volume = volume
   }
@@ -26,19 +32,14 @@ public struct Bass: Instrument {
       var beat = MusicTimeStamp(0.0)
       for chordIndex in progression.steps {
         
-        let bassline = Bassliner(chord: progression.harmonization.chords[chordIndex])
-        bassline.addNotes(toTrack: track, onBeat: &beat)
+        arranger.improviseNotes(toTrack: track, onBeat: &beat,
+                                basedOn: (progression.harmonization, progression.harmonization.chords[chordIndex]))
       }
-      
     }
   }
   
-  public func play() {
-    self.sampler.startPlaying()
-  }
   
-  public func stop() {
-    self.sampler.stopPlaying()
+  public func addedNote(withMidiValue: Int, atBeat: Double, withDuration: Double) {
+    
   }
-  
 }
