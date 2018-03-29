@@ -25,15 +25,18 @@ public class Piano: Instrument {
   public var arranger: Improviser
   
   public var canvas: MilesCanvas?
+  
+  public let draws: Bool
     
   /// Creates a new Piano instrument instance.
   ///
   /// - Parameters:
   ///   - type: A `PianoType` value indicating how the piano will generate the music.
   ///   - volume: The volume for the instrument *(should be between 0 and 1)*. Default is 1. 
-  public init(for type: PianoType, volume: Float = 1) {
+  public init(for type: PianoType, volume: Float = 1, draws: Bool = true) {
     self.sampler  = Sampler(for: .piano)
     self.sampler.volume = volume
+    self.draws = draws
     
     //Create the desired arranger
     if type == .comping {
@@ -49,18 +52,23 @@ public class Piano: Instrument {
     sampler.laySequence(atTempo: tempo) { (track) in
       var beat = MusicTimeStamp(0.0)
       for chordIndex in progression.steps {
-
         arranger.improviseNotes(toTrack: track, onBeat: &beat,
                                 basedOn: (progression.harmonization, progression.harmonization.chords[chordIndex]))
       }
     }
   }
-  
   // MARK: - ImproviserDelegate
   
 
   public func addedNote(withMidiValue: Int, atBeat: Double, withDuration: Double) {
-    canvas?.queueNote(delay: atBeat, lifespan: withDuration)
+    
+    if !draws { return }
+    
+    if Int.randomWith(ceil: 2) > 0{
+      canvas?.drawNote(ofType: .block, delay: atBeat, lifespan: withDuration)
+    } else {
+      canvas?.drawNote(ofType:.circle(size: CGFloat(Int.randomWith(floor: 2, ceil: 10))), delay: atBeat, lifespan: withDuration)
+    }
   }
 }
 

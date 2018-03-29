@@ -14,19 +14,23 @@ public class Drums: Instrument {
   
   public var sampler: Sampler
   
-  public let arranger: Improviser
+  public var arranger: Improviser
   
   public var canvas: MilesCanvas?
+  
+  public let draws: Bool
   
   /// Creates a new Drums instance with the specified parts.
   ///
   /// - Parameters:
   ///   - parts: The parts that the instrument will include
   ///   - volume: The volume for the instrument *(should be between 0 and 1)*. Default is 1. 
-  public init(withParts parts: Set<DrumSwinger.DrumPart>, volume: Float = 1) {
+  public init(withParts parts: Set<DrumSwinger.DrumPart>, volume: Float = 1, draws: Bool = false) {
     self.sampler = Sampler(for: .drums)
     self.arranger = DrumSwinger(withParts: parts)
     self.sampler.volume = volume
+    self.draws = draws
+    arranger.delegate = self
   }
   
   public func createArrangementFor(progression: Sequence.Progression, atTempo tempo: Double) {
@@ -39,7 +43,15 @@ public class Drums: Instrument {
     }
   }
   
-  public func addedNote(withMidiValue: Int, atBeat: Double, withDuration: Double) {
-    
+  public func addedNote(withMidiValue midiValue: Int, atBeat beat: Double, withDuration lifespan: Double) {
+    var size: CGFloat
+    switch midiValue {
+    case 36: size = 8
+    case 38: size = 5
+    default: size = 1
+    }
+    if draws {
+      canvas?.drawNote(ofType: .circle(size: size), delay: beat, lifespan: lifespan)
+    }
   }
 }

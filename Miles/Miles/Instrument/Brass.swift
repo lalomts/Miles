@@ -1,16 +1,19 @@
 //
-//  Bass.swift
+//  Brass.swift
 //  Miles
 //
-//  Created by Lalo Martínez on 3/26/18.
+//  Created by Lalo Martínez on 3/28/18.
 //  Copyright © 2018 Lalo Martínez. All rights reserved.
 //
 
 import AudioToolbox
-import SpriteKit
 
-/// A bass instrument that can be added to a sequence. It creates a walking bassline on top of the sequence chords.
-public class Bass: Instrument {
+public class Brass: Instrument {
+  
+  public enum BrassType: String {
+    case sax
+    case trumpet
+  }
   
   public var sampler: Sampler
   
@@ -20,17 +23,15 @@ public class Bass: Instrument {
   
   public let draws: Bool
   
-  /// Creates a new bass instrument instance.
-  ///
-  /// - Parameter volume: The volume for the instrument *(should be between 0 and 1)*. Default is 1.
-  public init(volume: Float = 1, draws: Bool = true) {
-    arranger = Bassliner()
-    self.sampler = Sampler(for: .bass)
+  public init(ofType type: BrassType, inScales scales: Soloer.ScaleRange = (2, 2), withVolume volume: Float = 1, draws: Bool = false ) {
+    guard let voice = InstrumentVoice(rawValue: type.rawValue) else { fatalError("No instrument with voice \(type.rawValue)") }
+    self.sampler = Sampler(for: voice)
     self.sampler.volume = volume
+    self.arranger = Soloer(inScales: scales, canOverlapNotes: false)
     self.draws = draws
     self.arranger.delegate = self
   }
-  
+
   public func createArrangementFor(progression: Sequence.Progression, atTempo tempo: Double) {
     sampler.laySequence(atTempo: tempo) { (track) in
       var beat = MusicTimeStamp(0.0)
@@ -43,9 +44,11 @@ public class Bass: Instrument {
   }
   
   public func addedNote(withMidiValue: Int, atBeat: Double, withDuration: Double) {
-    if draws {
-      canvas?.drawNote(ofType: .string, delay: atBeat, lifespan: withDuration)
-    }
   }
+  
+  
+  
+  
+  
   
 }

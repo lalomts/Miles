@@ -19,12 +19,14 @@
 		091350C12062C45200D909B1 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091350C02062C45200D909B1 /* Track.swift */; };
 		092AD78E2060CBE500E98981 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AD78D2060CBE500E98981 /* AppDelegate.swift */; };
 		092AD7902060CBE500E98981 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AD78F2060CBE500E98981 /* ViewController.swift */; };
-		092AD7952060CBE500E98981 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 092AD7942060CBE500E98981 /* Assets.xcassets */; };
 		092AD7982060CBE500E98981 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 092AD7962060CBE500E98981 /* LaunchScreen.storyboard */; };
 		092AD7A02060DC9D00E98981 /* Sampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AD79F2060DC9D00E98981 /* Sampler.swift */; };
 		092AD7A62060EDBE00E98981 /* piano.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 092AD7A52060EDBE00E98981 /* piano.sf2 */; };
 		092F338E206B16CC005546FC /* MilesCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F338D206B16CC005546FC /* MilesCanvas.swift */; };
 		092F3396206B8692005546FC /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F3395206B8692005546FC /* Drawable.swift */; };
+		092F3398206BF845005546FC /* Brass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F3397206BF845005546FC /* Brass.swift */; };
+		09392D3C206C09F50055FF23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09392D3B206C09F50055FF23 /* Assets.xcassets */; };
+		09392D3E206C21740055FF23 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09392D3D206C21740055FF23 /* UIColorExtensions.swift */; };
 		099307F720657CD4004B8BA1 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099307F620657CD4004B8BA1 /* Scale.swift */; };
 		099307F920658064004B8BA1 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099307F820658064004B8BA1 /* Interval.swift */; };
 		099307FC2065D919004B8BA1 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099307FB2065D919004B8BA1 /* IntExtensions.swift */; };
@@ -39,6 +41,7 @@
 		09ACBEB42068C95900ACBE99 /* Bassliner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACBEB32068C95900ACBE99 /* Bassliner.swift */; };
 		09ACBEB6206958D700ACBE99 /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACBEB5206958D700ACBE99 /* Instrument.swift */; };
 		09ACBEB82069665200ACBE99 /* DrumSwinger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACBEB72069665100ACBE99 /* DrumSwinger.swift */; };
+		09BA779A206C758100208068 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA7799206C758100208068 /* Teacher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,13 +58,15 @@
 		092AD78A2060CBE500E98981 /* Miles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Miles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		092AD78D2060CBE500E98981 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		092AD78F2060CBE500E98981 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		092AD7942060CBE500E98981 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		092AD7972060CBE500E98981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		092AD7992060CBE500E98981 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		092AD79F2060DC9D00E98981 /* Sampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sampler.swift; sourceTree = "<group>"; };
 		092AD7A52060EDBE00E98981 /* piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = piano.sf2; sourceTree = "<group>"; };
 		092F338D206B16CC005546FC /* MilesCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilesCanvas.swift; sourceTree = "<group>"; };
 		092F3395206B8692005546FC /* Drawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Drawable.swift; path = ../../../../../../.Trash/Drawable.swift; sourceTree = "<group>"; };
+		092F3397206BF845005546FC /* Brass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brass.swift; sourceTree = "<group>"; };
+		09392D3B206C09F50055FF23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		09392D3D206C21740055FF23 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		099307F620657CD4004B8BA1 /* Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
 		099307F820658064004B8BA1 /* Interval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
 		099307FB2065D919004B8BA1 /* IntExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtensions.swift; sourceTree = "<group>"; };
@@ -75,6 +80,7 @@
 		09ACBEB32068C95900ACBE99 /* Bassliner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bassliner.swift; sourceTree = "<group>"; };
 		09ACBEB5206958D700ACBE99 /* Instrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
 		09ACBEB72069665100ACBE99 /* DrumSwinger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrumSwinger.swift; sourceTree = "<group>"; };
+		09BA7799206C758100208068 /* Teacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,9 +97,11 @@
 		0911D9562069D3D7004E7225 /* Instrument */ = {
 			isa = PBXGroup;
 			children = (
+				092F3397206BF845005546FC /* Brass.swift */,
 				0911D9502069ADEC004E7225 /* Piano.swift */,
 				0911D9542069CD86004E7225 /* Drums.swift */,
 				0911D9572069D3E3004E7225 /* Bass.swift */,
+				09BA7799206C758100208068 /* Teacher.swift */,
 				09ACBEB5206958D700ACBE99 /* Instrument.swift */,
 				092AD79F2060DC9D00E98981 /* Sampler.swift */,
 				091350C02062C45200D909B1 /* Track.swift */,
@@ -107,7 +115,7 @@
 				092AD78C2060CBE500E98981 /* Miles */,
 				092AD7992060CBE500E98981 /* Info.plist */,
 				092AD7962060CBE500E98981 /* LaunchScreen.storyboard */,
-				092AD7942060CBE500E98981 /* Assets.xcassets */,
+				09392D3B206C09F50055FF23 /* Assets.xcassets */,
 				092AD78B2060CBE500E98981 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -155,6 +163,7 @@
 			children = (
 				099307FB2065D919004B8BA1 /* IntExtensions.swift */,
 				09964A1F206613B7004EEF75 /* ArrayExtensions.swift */,
+				09392D3D206C21740055FF23 /* UIColorExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -246,8 +255,8 @@
 				09ACBEAC20671AB600ACBE99 /* bass.sf2 in Resources */,
 				0911D94D20698642004E7225 /* drums.sf2 in Resources */,
 				092AD7A62060EDBE00E98981 /* piano.sf2 in Resources */,
+				09392D3C206C09F50055FF23 /* Assets.xcassets in Resources */,
 				09ACBEB0206865DF00ACBE99 /* Info.plist in Resources */,
-				092AD7952060CBE500E98981 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,8 +279,10 @@
 				0911D9582069D3E3004E7225 /* Bass.swift in Sources */,
 				091350C12062C45200D909B1 /* Track.swift in Sources */,
 				092F338E206B16CC005546FC /* MilesCanvas.swift in Sources */,
+				092F3398206BF845005546FC /* Brass.swift in Sources */,
 				09ACBEAE20685EF000ACBE99 /* ChordComper.swift in Sources */,
 				09ACBEB220687BBC00ACBE99 /* Rythm.swift in Sources */,
+				09392D3E206C21740055FF23 /* UIColorExtensions.swift in Sources */,
 				0911D9552069CD86004E7225 /* Drums.swift in Sources */,
 				092F3396206B8692005546FC /* Drawable.swift in Sources */,
 				099307FC2065D919004B8BA1 /* IntExtensions.swift in Sources */,
@@ -283,6 +294,7 @@
 				0909369020643EE500EBA1BF /* Improviser.swift in Sources */,
 				092AD78E2060CBE500E98981 /* AppDelegate.swift in Sources */,
 				099307F720657CD4004B8BA1 /* Scale.swift in Sources */,
+				09BA779A206C758100208068 /* Teacher.swift in Sources */,
 				092AD7A02060DC9D00E98981 /* Sampler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

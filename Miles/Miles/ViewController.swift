@@ -18,14 +18,14 @@ class TestViewController: UIViewController {
     super.loadView()
     
     view.backgroundColor = .red
-    
+    let bass = Bass()
     let piano = Piano(for: .comping, volume: 0.8)
     let pianoSoloer = Piano(for: .soloing, volume: 0.6)
     let drums = Drums(withParts: [.ride, .hihats, .snare, .bass])
-    let bass = Bass()
+    
     let harmonization = Harmonization(key: .Bflat, type: .harmonicMinor)
     
-    sequence = Sequence(harmonization: harmonization, tempo: 120, withInstruments: [ drums, bass, pianoSoloer])
+    sequence = Sequence(harmonization: harmonization, tempo: 120, withInstruments: [ bass, piano, drums, pianoSoloer])
     
     let tap = UITapGestureRecognizer(target: self, action: #selector(leaved2))
     self.view.addGestureRecognizer(tap)
@@ -43,9 +43,6 @@ class TestViewController: UIViewController {
   
   override func viewDidLoad() {
     let scene = MilesCanvas()
-    spriteview.showsFPS = true
-    spriteview.showsNodeCount = true
-    spriteview.ignoresSiblingOrder = true
     scene.scaleMode = .resizeFill
     sequence.setDrawingCanvas(scene)
     spriteview.presentScene(scene)

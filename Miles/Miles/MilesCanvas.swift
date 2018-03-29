@@ -10,47 +10,134 @@ import SpriteKit
 
 public class MilesCanvas: SKScene {
   
+  public enum DrawableNoteType {
+    case block
+    case circle(size: CGFloat)
+    case string
+  }
+  
+  public var colorPalette: ColorPalette = UIColor.originalMiles
+  
   public var tempo: Double = 120
   
-  private let blend = SKBlendMode.add
-    
   public override func didMove(to view: SKView) {
-    backgroundColor = #colorLiteral(red: 0.1568627451, green: 0.1725490196, blue: 0.2039215686, alpha: 1)
+    backgroundColor = colorPalette.background
     physicsWorld.gravity = CGVector.zero
   }
   
-  private func addPlayer(lifespan: Double) {
+  public func drawNote(ofType type:DrawableNoteType, delay: Double, lifespan: Double) {
     
-    let player = SKSpriteNode(imageNamed: "block")
-    
-    let randomY = random(min: 0, max: size.height)
-    let randomX = random(min: size.width * 0.25, max: size.width * 0.75)
-    player.position = CGPoint(x: randomX, y: randomY)
-    player.texture = nil
-    let colors: [UIColor] = [#colorLiteral(red: 0.9647058824, green: 0.737254902, blue: 0.1137254902, alpha: 1), #colorLiteral(red: 0.9450980392, green: 0.231372549, blue: 0.0862745098, alpha: 1), #colorLiteral(red: 0.3568627451, green: 0.2392156863, blue: 0.862745098, alpha: 1), #colorLiteral(red: 1, green: 0.3472463191, blue: 0.5793234706, alpha: 1), #colorLiteral(red: 0.3568627451, green: 0.970187717, blue: 0.862745098, alpha: 1), #colorLiteral(red: 0.1803921569, green: 0.7803921569, blue: 0.9450980392, alpha: 1) ]
-    
-    player.color = colors.randomElement()
-    player.colorBlendFactor = 1
-
-    player.blendMode = blendMode
-    self.addChild(player)
-    run(SKAction.wait(forDuration: lifespan)) {
-      player.removeFromParent()
-    }
-  }
-  
-  public func queueNote(delay: Double, lifespan: Double) {
+    run(SKAction.wait(forDuration: convertToTempo(delay))) {
+      
+      switch type {
         
-    run(SKAction.wait(forDuration: delay * 60 / self.tempo)) {
-      self.addPlayer(lifespan: lifespan * 60 / self.tempo)
+      case .block: self.addBlock(lifespan: self.convertToTempo(lifespan))
+      case .string: self.addString(lifespan: self.convertToTempo(lifespan))
+      case .circle(size: let size): self.addCircle(size: size, lifespan: self.convertToTempo(lifespan))        
+      }
     }
   }
   
-  func random() -> CGFloat {
+  private func addBlock(lifespan: Double) {
+    
+    let block = SKSpriteNode(imageNamed: "block\(Int.randomWith(floor: 1, ceil: 3) )")
+    
+    //Size
+    block.size.height *= random(min: 1, max: 2)
+    block.size.width *= random(min: 1, max: 1.5)
+    
+    //Rotation
+    let rotation: CGFloat = (CGFloat(Int.randomWith(ceil: 4)) * 90) + random(min: 0, max: 3)
+    block.zRotation = rotation * CGFloat.pi / 180
+    
+    //Position
+    let heightAdjust = block.size.height / 2
+    let widthAdjust = block.size.width / 2
+    
+    let randomY = random(min: (size.height * 0.05) + heightAdjust, max: (size.height * 0.9) - heightAdjust)
+    let randomX = random(min: (size.width * 0.05) + widthAdjust, max: (size.width * 0.9) - widthAdjust)
+    block.position = CGPoint(x: randomX, y: randomY)
+        
+    //Color
+    block.color = colorPalette.colors.randomElement()
+    block.colorBlendFactor = 1
+    block.blendMode = SKBlendMode.screen
+  
+    self.addChild(block)
+    
+    run(SKAction.wait(forDuration: lifespan)) {
+      block.removeFromParent()
+    }
+  }
+  
+  private func addString(lifespan: Double) {
+    
+    let string = SKSpriteNode(imageNamed: "string")
+    
+    //Adjust size
+    string.size.height = size.height
+    string.size.width = 8
+    
+    let partialWith = size.width * 0.2
+    let widthOffset = (size.width - partialWith) / 2
+    
+    let xPosition = partialWith / 3 * CGFloat(Int.randomWith(floor: 0, ceil: 3))
+    string.position = CGPoint(x: widthOffset + xPosition, y: size.height / 2)
+    
+    //Color
+    string.color = .white
+    string.colorBlendFactor = 1
+    string.blendMode = SKBlendMode.screen
+    
+    self.addChild(string)
+    
+    string.run(SKAction.fadeOut(withDuration: lifespan))
+    run(SKAction.wait(forDuration: lifespan)) {
+      string.removeFromParent()
+    }
+  }
+  
+  private func addCircle(size circleSize: CGFloat, lifespan: Double) {
+    
+    let circle = SKSpriteNode(imageNamed: "circle")
+    
+    //Size
+    let randomSize = random(min: 20, max: 30) * circleSize
+    circle.size = CGSize(width: randomSize, height: randomSize)
+    
+    //Position
+    let heightAdjust = circle.size.height / 2
+    let widthAdjust = circle.size.width / 2
+    
+    let randomY = random(min: (size.height * 0.05) + heightAdjust, max: (size.height * 0.9) - heightAdjust)
+    let randomX = random(min: (size.width * 0.05) + widthAdjust, max: (size.width * 0.9) - widthAdjust)
+    circle.position = CGPoint(x: randomX, y: randomY)
+    
+    //Color
+    circle.color = colorPalette.colors.randomElement()
+    circle.colorBlendFactor = 1
+    circle.blendMode = SKBlendMode.screen
+    
+    self.addChild(circle)
+    
+    run(SKAction.wait(forDuration: lifespan)) {
+      circle.removeFromParent()
+    }
+  }
+  
+  public func randomBackground() {
+    self.backgroundColor = colorPalette.colors.randomElement()
+  }
+  
+  private func convertToTempo(_ delay: Double) -> Double {
+    return delay * 60 / self.tempo
+  }
+  
+  private func random() -> CGFloat {
     return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
   }
   
-  func random(min: CGFloat, max: CGFloat) -> CGFloat {
+  private func random(min: CGFloat, max: CGFloat) -> CGFloat {
     return random() * (max - min) + min
   }
   

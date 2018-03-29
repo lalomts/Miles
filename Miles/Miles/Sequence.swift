@@ -87,7 +87,6 @@ public class Sequence {
     }
   }
   
-  
   // MARK: - Sequence drawing
   public func setDrawingCanvas(_ canvas: MilesCanvas) {
     canvas.tempo = self.tempo

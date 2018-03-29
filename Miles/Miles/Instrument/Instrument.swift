@@ -11,6 +11,8 @@ public enum InstrumentVoice: String {
   case piano
   case drums
   case bass
+  case sax
+  case trumpet
   
   public var midiType: Sampler.MidiBankType {
     switch self {

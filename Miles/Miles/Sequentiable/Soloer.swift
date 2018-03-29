@@ -11,12 +11,18 @@ import AudioToolbox
 /// Creates a melody line based on a random scale that works with each chord. 
 public class Soloer: Improviser {
   
+  public typealias ScaleRange = (min: Int, max: Int)
+  
   public var delegate: ImproviserDelegate?
   
   public let canOverlapNotes: Bool
   
-  public init(canOverlapNotes:Bool = true) {
+  public let scaleRange: ScaleRange
+  
+  public init(inScales scales: ScaleRange = (3, 4), canOverlapNotes:Bool = true) {
+    self.scaleRange = scales
     self.canOverlapNotes = canOverlapNotes
+  
   }
   
   public func improviseNotes(toTrack track: MusicTrack, onBeat beat: inout MusicTimeStamp, basedOn harmony: Improviser.Harmony) {
@@ -42,7 +48,7 @@ public class Soloer: Improviser {
         let realBeat = beat + internalBeat
         
         let note = Note.init(tone: improvScale.tones(forKey: harmony.harmonization.key).randomElement(),
-                             octave: Int.randomWith(floor: 3, ceil: 4))
+                             octave: Int.randomWith(floor: scaleRange.min, ceil: scaleRange.max))
         
         note.addToTrack(track, onBeat: realBeat, duration: duration, velocity: Int.randomWith(floor: 40, ceil: 60))
         
