@@ -44,14 +44,8 @@ public class Drums: Instrument {
   }
   
   public func addedNote(withMidiValue midiValue: Int, atBeat beat: Double, withDuration lifespan: Double) {
-    var size: CGFloat
-    switch midiValue {
-    case 36: size = 8
-    case 38: size = 5
-    default: size = 1
-    }
-    if draws {
-      canvas?.drawNote(ofType: .circle(size: size), delay: beat, lifespan: lifespan)
+    if draws && midiValue == 51 {
+      canvas?.drawCymbalCircle(delay: beat, lifespan: lifespan)
     }
   }
 }

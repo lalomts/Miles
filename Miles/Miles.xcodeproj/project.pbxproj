@@ -41,7 +41,7 @@
 		09ACBEB42068C95900ACBE99 /* Bassliner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACBEB32068C95900ACBE99 /* Bassliner.swift */; };
 		09ACBEB6206958D700ACBE99 /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACBEB5206958D700ACBE99 /* Instrument.swift */; };
 		09ACBEB82069665200ACBE99 /* DrumSwinger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACBEB72069665100ACBE99 /* DrumSwinger.swift */; };
-		09BA779A206C758100208068 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA7799206C758100208068 /* Teacher.swift */; };
+		09BA779A206C758100208068 /* PianoTeacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA7799206C758100208068 /* PianoTeacher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +67,7 @@
 		092F3397206BF845005546FC /* Brass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brass.swift; sourceTree = "<group>"; };
 		09392D3B206C09F50055FF23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09392D3D206C21740055FF23 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		098A3343206C7FB500979E38 /* Drawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawable.swift; sourceTree = "<group>"; };
 		099307F620657CD4004B8BA1 /* Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
 		099307F820658064004B8BA1 /* Interval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
 		099307FB2065D919004B8BA1 /* IntExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtensions.swift; sourceTree = "<group>"; };
@@ -80,7 +81,7 @@
 		09ACBEB32068C95900ACBE99 /* Bassliner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bassliner.swift; sourceTree = "<group>"; };
 		09ACBEB5206958D700ACBE99 /* Instrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
 		09ACBEB72069665100ACBE99 /* DrumSwinger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrumSwinger.swift; sourceTree = "<group>"; };
-		09BA7799206C758100208068 /* Teacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
+		09BA7799206C758100208068 /* PianoTeacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoTeacher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,11 +98,11 @@
 		0911D9562069D3D7004E7225 /* Instrument */ = {
 			isa = PBXGroup;
 			children = (
+				09BA7799206C758100208068 /* PianoTeacher.swift */,
 				092F3397206BF845005546FC /* Brass.swift */,
 				0911D9502069ADEC004E7225 /* Piano.swift */,
 				0911D9542069CD86004E7225 /* Drums.swift */,
 				0911D9572069D3E3004E7225 /* Bass.swift */,
-				09BA7799206C758100208068 /* Teacher.swift */,
 				09ACBEB5206958D700ACBE99 /* Instrument.swift */,
 				092AD79F2060DC9D00E98981 /* Sampler.swift */,
 				091350C02062C45200D909B1 /* Track.swift */,
@@ -132,7 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				092AD78F2060CBE500E98981 /* ViewController.swift */,
-				092F338D206B16CC005546FC /* MilesCanvas.swift */,
+				098A3342206C7FB500979E38 /* Canvas */,
 				092AD78D2060CBE500E98981 /* AppDelegate.swift */,
 				09964A212066233D004EEF75 /* Sequence.swift */,
 				092F3395206B8692005546FC /* Drawable.swift */,
@@ -143,6 +144,15 @@
 				099307FD2065DDDD004B8BA1 /* Extensions */,
 			);
 			path = Miles;
+			sourceTree = "<group>";
+		};
+		098A3342206C7FB500979E38 /* Canvas */ = {
+			isa = PBXGroup;
+			children = (
+				092F338D206B16CC005546FC /* MilesCanvas.swift */,
+				098A3343206C7FB500979E38 /* Drawable.swift */,
+			);
+			path = Canvas;
 			sourceTree = "<group>";
 		};
 		099307FA20658844004B8BA1 /* Theory */ = {
@@ -294,7 +304,7 @@
 				0909369020643EE500EBA1BF /* Improviser.swift in Sources */,
 				092AD78E2060CBE500E98981 /* AppDelegate.swift in Sources */,
 				099307F720657CD4004B8BA1 /* Scale.swift in Sources */,
-				09BA779A206C758100208068 /* Teacher.swift in Sources */,
+				09BA779A206C758100208068 /* PianoTeacher.swift in Sources */,
 				092AD7A02060DC9D00E98981 /* Sampler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

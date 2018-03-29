@@ -42,9 +42,9 @@ public class Bass: Instrument {
     }
   }
   
-  public func addedNote(withMidiValue: Int, atBeat: Double, withDuration: Double) {
+  public func addedNote(withMidiValue: Int, atBeat beat: Double, withDuration duration: Double) {
     if draws {
-      canvas?.drawNote(ofType: .string, delay: atBeat, lifespan: withDuration)
+      canvas?.drawString(delay: beat, lifespan: duration)
     }
   }
   

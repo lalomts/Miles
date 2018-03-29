@@ -9,7 +9,7 @@ import AudioToolbox
 import SpriteKit
 
 /// A piano instrument that can be added to a sequence. It can be used to play a *comping rythm* or for *soloing.*
-public class Piano: Instrument {
+public class Piano: Instrument { 
 
   /// The purpose of the piano instrument (determines what type of music it will generate)
   ///
@@ -60,15 +60,16 @@ public class Piano: Instrument {
   // MARK: - ImproviserDelegate
   
 
-  public func addedNote(withMidiValue: Int, atBeat: Double, withDuration: Double) {
+  public func addedNote(withMidiValue: Int, atBeat beat: Double, withDuration duration: Double) {
     
     if !draws { return }
     
-    if Int.randomWith(ceil: 2) > 0{
-      canvas?.drawNote(ofType: .block, delay: atBeat, lifespan: withDuration)
+    if Int.randomWith(ceil: 1) > 0{
+      canvas?.drawCircle(withSizeMiultiplier: 9, delay: beat, lifespan: duration)
     } else {
-      canvas?.drawNote(ofType:.circle(size: CGFloat(Int.randomWith(floor: 2, ceil: 10))), delay: atBeat, lifespan: withDuration)
+      canvas?.drawBlock(withSizeMiultiplier: 2, delay: beat, lifespan: duration)
     }
   }
+  
 }
 
