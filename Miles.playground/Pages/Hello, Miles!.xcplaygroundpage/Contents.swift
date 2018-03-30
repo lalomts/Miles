@@ -18,7 +18,7 @@ let view = SKView(frame: CGRect(x: 0, y: 0, width: 800, height: 500))
 PlaygroundPage.current.liveView = view
 // Creates the canvas
 let canvas = MilesCanvas()
-canvas.colorPalette = UIColor.ramboSunshine
+canvas.colorPalette = NSColor.ramboSunshine
 canvas.scaleMode = .resizeFill
 view.presentScene(canvas)
 /*:

@@ -18,7 +18,7 @@ public class MilesCanvas: SKScene {
   }
   
   /// The color palette used to create the visuals.
-  public var colorPalette: ColorPalette = UIColor.originalMiles
+  public var colorPalette: ColorPalette = NSColor.originalMiles
   
   public var tempo: Double = 120
   

@@ -7,7 +7,7 @@ PlaygroundPage.current.liveView = view
 
 // Creates the canvas
 let canvas = MilesCanvas()
-canvas.colorPalette = UIColor.purpleRain
+canvas.colorPalette = NSColor.purpleRain
 canvas.scaleMode = .resizeFill
 view.presentScene(canvas)
 /*:
