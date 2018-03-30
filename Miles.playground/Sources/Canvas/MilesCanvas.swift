@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-/// MilesCanvas is a sublass of `SKScene` used to render a visual representation of the notes played by Miles. x
+/// MilesCanvas is a sublass of `SKScene` used to render a visual representation of the notes played by Miles. 
 public class MilesCanvas: SKScene {
   
   public enum DrawableNoteType {
@@ -28,7 +28,7 @@ public class MilesCanvas: SKScene {
   public override func didMove(to view: SKView) {
     backgroundColor = colorPalette.background
     physicsWorld.gravity = CGVector.zero
-    scaleMode = .resizeFill
+    self.scaleMode = .resizeFill
   }
   
   

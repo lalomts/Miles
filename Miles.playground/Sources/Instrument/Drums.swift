@@ -25,7 +25,7 @@ public class Drums: Instrument {
   /// - Parameters:
   ///   - parts: The parts that the instrument will include
   ///   - volume: The volume for the instrument *(should be between 0 and 1)*. Default is 1. 
-  public init(withParts parts: Set<DrumSwinger.DrumPart>, volume: Float = 1, draws: Bool = false) {
+  public init(withParts parts: Set<DrumSwinger.DrumPart>, volume: Float = 1, draws: Bool = true) {
     self.sampler = Sampler(for: .drums)
     self.arranger = DrumSwinger(withParts: parts)
     self.sampler.volume = volume

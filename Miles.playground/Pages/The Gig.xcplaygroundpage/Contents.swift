@@ -1,21 +1,22 @@
-//: ![I could not resist designing a logo](miles_logo.pdf)
+//: ![The last page with the logo, I swear.](miles_logo.pdf)
 /*:
- ##### The jazz improviser playground.
-In my opinion, one of the most amazing things of jazz is that it relies on improvisation. Musicians play whatever they can come up with in the moment, and maybe they are never able to play that again. It's amazing.
+ ## Ready for the improv?
  
- Being such an admirer of the artform, I decided to create **Miles:** A playground that can improvise and play jazz pieces.
+ - Note:
+ Jazz pieces created by Miles are different everytime, enjoy them all!
  
-Here are the basics of how it works:
+ #### Run the playground now to listen a new improvisation.
  
  ---
  
+ While you listen...
  ## First, let's create our musicians.
  We can create pianos, basses and drums.
  
  Each instrument has its own `Improviser` that creates **MIDI** notes on the spot, like just a real musician does. Improvisers in charge of creating notes, chords, basslines and drum beats that work with each other.
  
  */
-let drums = Drums(withParts: [.ride, .hihats, .snare, .bass], draws: false )
+let drums = Drums(withParts: [.ride, .hihats, .snare, .bass], draws: false)
 let bass = Bass(volume: 1, draws: true)
 let piano = Piano(for: .comping, volume: 0.8, draws: true)
 let pianoSoloer = Piano(for: .soloing, volume: 0.6, draws: true)
@@ -42,7 +43,7 @@ let harmonization = Harmonization(key: .Csharp, type: .melodicMinor)
  - Try removing instruments from the sequence to focus on others
  
  Cool, huh?
-*/
+ */
 let sequence = Sequence(harmonization: harmonization, tempo: 120, withInstruments: [drums, bass, piano, pianoSoloer])
 /*:
  ---
@@ -53,16 +54,13 @@ let sequence = Sequence(harmonization: harmonization, tempo: 120, withInstrument
  
  Can you identify the instruments?
  * Experiment:
- 
- - Try selecting different color palettes to see which look you prefer.
- - You can go back up and change the instrument's _draw_ property to make them draw or stop drawing.
- 
-  *(The circles and rectangles, represent each note played by the piano, and the vertical lines across the screen are the bass' strings.)*
+ Go back up and change the instrument's _draw_ property to make them draw or stop drawing to the canvas.
+
  */
 import PlaygroundSupport
 import SpriteKit
+
 PlaygroundPage.current.needsIndefiniteExecution = true
-// Create a liveView for the playground
 let view = SKView(frame: CGRect(x: 0, y: 0, width: 800, height: 500))
 PlaygroundPage.current.liveView = view
 
@@ -74,6 +72,8 @@ view.presentScene(canvas)
 //Link the sequence and the new canvas
 sequence.setDrawingCanvas(canvas)
 /*:
+ ---
+ 
  ## Enjoy!
  We tell our sequence to create an arrangement with the properties we specify and to play it for us to enjoy!
  
@@ -82,3 +82,5 @@ sequence.setDrawingCanvas(canvas)
  */
 sequence.createArrangement()
 sequence.startPlaying()
+
+//: ### [Previous](@previous)
