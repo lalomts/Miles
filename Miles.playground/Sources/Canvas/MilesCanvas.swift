@@ -9,7 +9,7 @@
 import SpriteKit
 
 /// MilesCanvas is a sublass of `SKScene` used to render a visual representation of the notes played by Miles. 
-public class MilesCanvas: SKScene {
+open class MilesCanvas: SKScene {
   
   public enum DrawableNoteType {
     case block
@@ -18,21 +18,21 @@ public class MilesCanvas: SKScene {
   }
   
   /// The color palette used to create the visuals.
-  public var colorPalette: ColorPalette = NSColor.originalMiles
+  open var colorPalette: ColorPalette = NSColor.originalMiles
   
-  public var tempo: Double = 120
+  open var tempo: Double = 120
   
   private let commonFadeTime: Double = 1.2
   
   //Initial setup
-  public override func didMove(to view: SKView) {
+  open override func didMove(to view: SKView) {
     backgroundColor = colorPalette.background
     physicsWorld.gravity = CGVector.zero
     self.scaleMode = .resizeFill
   }
   
   
-  public func drawCircle(withSizeMiultiplier multiplier: CGFloat, boring: Bool = false, fades: Bool = false, delay: Double, lifespan: Double) {
+  open func drawCircle(withSizeMiultiplier multiplier: CGFloat, boring: Bool = false, fades: Bool = false, delay: Double, lifespan: Double) {
     
     let circle = SKSpriteNode(imageNamed: "circle")
     
@@ -67,7 +67,7 @@ public class MilesCanvas: SKScene {
     }
   }
   
-  public func drawBlock(withSizeMiultiplier multiplier: CGFloat, boring: Bool = false, fades: Bool = false, delay: Double, lifespan: Double) {
+  open func drawBlock(withSizeMiultiplier multiplier: CGFloat, boring: Bool = false, fades: Bool = false, delay: Double, lifespan: Double) {
     
     let block = SKSpriteNode(imageNamed: "block\(Int.randomWith(floor: 1, ceil: 3) )")
     
@@ -107,7 +107,7 @@ public class MilesCanvas: SKScene {
   }
 
   
-  public func drawString(delay: Double, lifespan: Double) {
+  open func drawString(delay: Double, lifespan: Double) {
     
     let string = SKSpriteNode(imageNamed: "string")
     
@@ -134,7 +134,7 @@ public class MilesCanvas: SKScene {
     }
   }
   
-  public func drawCymbalCircle(delay: Double, lifespan: Double) {
+  open func drawCymbalCircle(delay: Double, lifespan: Double) {
     
     print("will draw cymbal")
     

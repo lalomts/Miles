@@ -8,6 +8,9 @@
  Jazz is very complex artform, so I created a `PianoTeacher` class that understands a lot music theory and will clear up some concepts before we begin. Are you ready?
  
  ---
+ 
+ * Important:
+Xcode sometimes fails to load the source files. If there's an error, just run the Playground again. 😳
  */
 //First, we'll create a view to display our music.
 import PlaygroundSupport
@@ -22,8 +25,6 @@ canvas.colorPalette = NSColor.ramboSunshine
 canvas.scaleMode = .resizeFill
 view.presentScene(canvas)
 /*:
- ---
- 
  ## The basics: Scales
  
  A **scale** is set of musical notes that are based on a fundamental pitch or tone. Jazz and music in general rely on scales to create songs and melodies with notes that sound good with each other.

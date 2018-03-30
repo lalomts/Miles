@@ -9,12 +9,12 @@
 import AudioToolbox
 
 /// The PianoTeacher is an instrument-like class designed to show how music works by playing different scales and harmonizations in a non-jazz way.
-public class PianoTeacher: Drawable {
+open class PianoTeacher: Drawable {
   
   /// The `MilesCanvas` instance to use when drawing the teacher's notes.
-  public var canvas: MilesCanvas?
+  open var canvas: MilesCanvas?
   
-  public var draws: Bool
+  open var draws: Bool
   
   private let sampler: Sampler
   
@@ -31,7 +31,7 @@ public class PianoTeacher: Drawable {
   ///   - octaves: The octaves the scale should be played in.
   ///   - tempo: The speed at which the scale should be played.
   ///   - useStaticTime: A Boolean value indicating wether or not all notes should have the same duration.
-  public func play(scale: Scale, inKey key: Tone, inOctaves octaves: [Int], withTempo tempo: Double, useStaticTime: Bool) {
+  open func play(scale: Scale, inKey key: Tone, inOctaves octaves: [Int], withTempo tempo: Double, useStaticTime: Bool) {
     
     canvas?.tempo = tempo
     
@@ -66,7 +66,7 @@ public class PianoTeacher: Drawable {
   ///   - octave: The octave to play the chords in.
   ///   - tempo: The speed at which the chords should be played
   ///   - arpeggiated: A boolean value indicating wether or not the notes in the chord should be arpeggiated. 
-  public func playChordsIn(harmonization: Harmonization, atOctave octave: Int, withTempo tempo: Double, arpeggiated: Bool) {
+  open func playChordsIn(harmonization: Harmonization, atOctave octave: Int, withTempo tempo: Double, arpeggiated: Bool) {
     
     canvas?.tempo = tempo
     
