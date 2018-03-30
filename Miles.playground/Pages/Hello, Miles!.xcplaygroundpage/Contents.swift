@@ -28,7 +28,7 @@ view.presentScene(canvas)
  
  A **scale** is set of musical notes that are based on a fundamental pitch or tone. Jazz and music in general rely on scales to create songs and melodies with notes that sound good with each other.
  
- ### **Run** the playground to make the teacher play a scale.
+  ▶️**Run** the playground to make the teacher play a scale.
  
  * Experiment:
  Modify the arguments in the `play` method to listen to other types of scales.

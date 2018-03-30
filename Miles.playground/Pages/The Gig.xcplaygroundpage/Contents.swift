@@ -33,7 +33,7 @@ let pianoSoloer = Piano(for: .soloing, volume: 0.6, draws: true)
  
  Do your hear the difference in melodies and chords?
  */
-let harmonization = Harmonization(key: .Csharp, type: .melodicMinor)
+let harmonization = Harmonization(key: .Eflat, type: .harmonicMinor)
 /*:
  Now, we create a `Sequence` which allows our instruments to work togueter in order to create a song.
  

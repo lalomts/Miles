@@ -23,10 +23,10 @@ view.presentScene(canvas)
  */
 let harmonization = Harmonization(key: .Eflat, type: .harmonicMinor)
 /*:
- ### Run the playground now to make our teacher play the harmonization */
+ ▶️ Run the playground now to make our teacher play the harmonization */
 let teacher = PianoTeacher()
 teacher.canvas = canvas
- teacher.playChordsIn(harmonization: harmonization, atOctave: 3, withTempo: 100, arpeggiated: false)
+ teacher.playChordsIn(harmonization: harmonization, atOctave: 2, withTempo: 100, arpeggiated: false)
 /*:
  Interesting, right?
  
