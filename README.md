@@ -10,3 +10,5 @@ Miles can create jazz improvisations for piano, bass and drums in any key and an
 * **AudioToolbox** (for MIDI)
 * **AVFoundation:** AVAudioUnitSampler and AVAudioSequencer to create the MIDI playback and soundfont sampling
 * **SpriteKit** to create the animations
+
+[Watch it on Youtube](https://www.youtube.com/watch?v=gX_dBSTE-cE)
